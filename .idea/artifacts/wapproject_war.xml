@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wapproject:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="wap-project.war">
+      <element id="artifact" artifact-name="wapproject:war exploded" />
+    </root>
+  </artifact>
+</component>

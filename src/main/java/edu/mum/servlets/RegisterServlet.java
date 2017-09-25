@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import edu.mum.repositories.UserRepository;
 import edu.mum.models.User;
 import edu.mum.utils.Constants;
+import edu.mum.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -36,28 +33,34 @@ public class RegisterServlet extends HttpServlet {
         String yearOfBirth = request.getParameter("year-of-birth");
         String errorMsg = null;
         if (gender == null) {
-            errorMsg = "Gender can't be null or empty.";
+            errorMsg = Constants.EMPTY_GENDER;
         }
         if (firstName == null || firstName.equals("")) {
-            errorMsg = "First name can't be null or empty.";
+            errorMsg = Constants.EMPTY_FIRSTNAME;
         }
         if (lastName == null || lastName.equals("")) {
-            errorMsg = "Last name can't be null or empty.";
+            errorMsg = Constants.EMPTY_LASTNAME;
         }
         if (email == null || email.equals("")) {
-            errorMsg = "Email ID can't be null or empty.";
+            errorMsg = Constants.EMPTY_EMAIL;
+        }
+        if (!ValidationUtils.verifyEmail(email)) {
+            errorMsg = Constants.ERROR_EMAIL_PATTERN;
         }
         if (password == null || password.equals("")) {
-            errorMsg = "Password can't be null or empty.";
+            errorMsg = Constants.EMPTY_PASSWORD;
+        }
+        if (!ValidationUtils.verifyPassword(password)) {
+            errorMsg = Constants.ERROR_PASSWORD_PATTERN;
         }
         if (passwordConfirm == null || passwordConfirm.equals("")) {
-            errorMsg = "Password confirm can't be null or empty.";
+            errorMsg = Constants.EMPTY_PASSWORD_COMFIRM;
         }
         if (!passwordConfirm.equals(password)) {
-            errorMsg = "Password and password confirm must be the same.";
+            errorMsg = Constants.NOT_SAME_CONFIRM_PASSWORD;
         }
         if (yearOfBirth == null || yearOfBirth.equals("0")) {
-            errorMsg = "Please select Year of birth";
+            errorMsg = Constants.EMPTY_YEAR_OF_BIRTH;
         }
 
         if (errorMsg != null) {
@@ -68,45 +71,19 @@ public class RegisterServlet extends HttpServlet {
             UserRepository userRepository = new UserRepository();
 
             if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
+                logger.info("Create an account with these information \n First name: " + firstName
+                        + ", " + " First name: " + firstName
+                        + ", " + " Last name: " + firstName
+                        + ", " + " Email: " + email
+                        + ", " + " Year of birth: " + yearOfBirth
+                        + ", " + " Gender: " + gender
+                );
                 User user = userRepository.getUser(email, password);
                 if (user != null) {
                     request.getSession().setAttribute("sesUser", user);
                     response.sendRedirect(request.getContextPath());
                 }
             }
-//
-//            Connection con = (Connection) getServletContext().getAttribute("DBConnection");
-//            PreparedStatement ps = null;
-//            try {
-//
-//                ps = con.prepareStatement("insert into Users(firstName, lastName, email, password, yearOfBirth, gender) values (?,?,?,?,?,?)");
-//                ps.setString(1, firstName);
-//                ps.setString(2, lastName);
-//                ps.setString(3, email);
-//                ps.setString(4, password);
-//                ps.setString(5, yearOfBirth);
-//                ps.setString(6, gender);
-//
-//                ps.execute();
-//
-//                logger.info("User registered with email=" + email);
-//
-//                //forward to login page to login
-//                RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_LOG_IN);
-//                PrintWriter out = response.getWriter();
-//                out.println("<font color=green>Registration successful, please login below.</font>");
-//                rd.include(request, response);
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//                logger.error("Database connection problem");
-//                throw new ServletException("DB Connection problem.");
-//            } finally {
-////                try {
-////                    ps.close();
-////                } catch (SQLException e) {
-////                    logger.error("SQLException in closing PreparedStatement");
-////                }
-//            }
         }
     }
 

@@ -14,8 +14,7 @@
 <body>
 <tags:header></tags:header>
 <div id="register" class="container wrapper">
-    <form id="register-form" class="form-horizontal regular-form" action="register" method="POST"
-          novalidate="novalidate">
+    <form id="register-form" class="form-horizontal regular-form" action="register" method="POST">
         <h2 class="title">Sign up</h2>
         <div class="form-group">
             <div class="has-error">${errorMsg}</div>
@@ -34,14 +33,14 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-fn"><i class="fa fa-font" aria-hidden="true"></i></span>
                 <input type="text" name="firstname" class="form-control" placeholder="First name" aria-label="firstname"
-                       aria-describedby="basic-addon-fn">
+                       aria-describedby="basic-addon-fn" required value="${ not empty firstname ? firstname : '' }">
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-ln"><i class="fa fa-font" aria-hidden="true"></i></span>
                 <input type="text" name="lastname" class="form-control" placeholder="Last name" aria-label="lastname"
-                       aria-describedby="basic-addon-ln">
+                       aria-describedby="basic-addon-ln" required>
             </div>
         </div>
 
@@ -49,15 +48,15 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-email"><i class="fa fa-envelope-o"
                                                                           aria-hidden="true"></i></span>
-                <input type="text" name="email" class="form-control" placeholder="Email" aria-label="email"
-                       aria-describedby="basic-addon-email">
+                <input type="email" name="email" class="form-control" placeholder="Email" aria-label="email"
+                       aria-describedby="basic-addon-email" pattern="[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}" >
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-pw"><i class="fa fa-lock" aria-hidden="true"></i></span>
-                <input type="text" name="password" class="form-control" placeholder="Password (min .8 characters)"
-                       aria-label="password" aria-describedby="basic-addon-pw">
+                <input type="password" name="password" class="form-control" placeholder="Password (min .8 characters)"
+                       aria-label="password" aria-describedby="basic-addon-pw" required pattern=".{8,}">
             </div>
         </div>
         <div class="form-group">
@@ -65,11 +64,11 @@
                 <span class="input-group-addon" id="basic-addon-cpw"><i class="fa fa-lock"
                                                                         aria-hidden="true"></i></span>
                 <input type="text" name="confirm-password" class="form-control" placeholder="Confirm password"
-                       aria-label="confirm-password" aria-describedby="basic-addon-cpw">
+                       aria-label="confirm-password" aria-describedby="basic-addon-cpw" required pattern=".{8,}">
             </div>
         </div>
         <div class="form-group">
-            <select class="form-control" id="year-of-birth" name="year-of-birth">
+            <select class="form-control" id="year-of-birth" name="year-of-birth" required>
                 <option value="0">Year of birth</option>
                 <option value="1990">1990</option>
                 <option value="1991">1991</option>
@@ -85,7 +84,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-success" type="submit">Sign up</button>
+            <button class="btn btn-primary" type="submit">Sign up</button>
         </div>
 
         <div class="form-group">

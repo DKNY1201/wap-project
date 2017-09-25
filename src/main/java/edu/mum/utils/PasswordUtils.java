@@ -6,8 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PasswordUtils {
-	private static final String PASSWORD_SALT = "mum-duc-lam-tuan";
-	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,})";
+	private static final String PASSWORD_SALT = "mum";
 
 	public static String generateHash(String purePassword) {
 		String saltedPassword = PASSWORD_SALT + purePassword;
@@ -30,9 +29,4 @@ public class PasswordUtils {
 		return hash.toString();
 	}
 
-	public static boolean verifyPassword(String password) {
-		Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
-		Matcher matcher = pattern.matcher(password);
-		return matcher.matches();
-	}
 }

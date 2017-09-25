@@ -14,42 +14,31 @@
 <body>
 	<tags:header></tags:header>
 	<div id="main" class="container wrapper">
-		<form id="login-form" class="form-horizontal" action="login" method="POST" novalidate="novalidate">
+		<form id="login-form" class="form-horizontal" action="login" method="POST">
 			<h2 class="title">Log in</h2>
 			<div class="form-group">
-				<label for="inputEmail" class="col-sm-3 control-label">Email</label>
-				<div class="col-sm-9">
-					<input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus=""
-						value="<c:out value="${empty param.email ? cookie.email.value : param.email}" />" />
+				<div class="has-error">${errorMsg}</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+                	<span class="input-group-addon" id="basic-addon-email"><i class="fa fa-envelope-o"
+																		  aria-hidden="true"></i></span>
+					<input type="email" name="email" class="form-control" placeholder="Email" aria-label="email"
+						   aria-describedby="basic-addon-email" pattern="[a-zA-Z0-9_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="col-sm-3 control-label">Password</label>
-				<div class="col-sm-9">
-					<input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"
-						value="<c:out value="${empty param.password ? cookie.password.value : param.password}" />" />
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon-pw"><i class="fa fa-lock" aria-hidden="true"></i></span>
+					<input type="password" name="password" class="form-control" placeholder="Password (min .8 characters)"
+						   aria-label="password" aria-describedby="basic-addon-pw" required pattern=".{8,}">
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9">
-					<div class="checkbox">
-						<label> <input name="rememberMe" type="checkbox" ${not empty cookie.email ? 'checked="checked"' : ''}> Remember me
-						</label>
-					</div>
-				</div>
+				<button class="btn btn-primary" type="submit">Log in</button>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9">
-					<button class="btn btn-primary" type="submit">Log in</button>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9 has-error">${errorMsg}</div>
-			</div>
-			<div class="form-group">
-				<p class="col-sm-offset-3 col-sm-9">
-					<em>If you are a new user, please click <a href="<c:url value='/register'/>">here</a> to register.</em>
-				</p>
+				<em>If you are a new user, please click <a href="<c:url value='/register'/>">here</a> to register.</em>
 			</div>
 		</form>
 	</div>

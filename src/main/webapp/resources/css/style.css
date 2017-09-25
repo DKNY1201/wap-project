@@ -9,3 +9,7 @@
 .has-error {
     color: red;
 }
+
+.title {
+    text-align: center;
+}

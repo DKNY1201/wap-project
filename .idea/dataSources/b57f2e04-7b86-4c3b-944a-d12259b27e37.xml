@@ -34,7 +34,7 @@
     </column>
     <column id="15" parent="11" name="email">
       <Position>4</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
@@ -45,7 +45,7 @@
     </column>
     <column id="17" parent="11" name="password">
       <Position>6</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(1000)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>

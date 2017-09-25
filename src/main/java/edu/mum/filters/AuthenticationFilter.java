@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
  */
 @WebFilter(filterName = "AuthenticationFilter", urlPatterns = { "/*" })
 public class AuthenticationFilter implements Filter {
-    private ServletContext context;
 
     private Logger logger = Logger.getLogger(AuthenticationFilter.class);
 
@@ -30,9 +29,9 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = request.getSession(false);
 
-        if (session == null && !(uri.endsWith("html") || uri.endsWith("login") || uri.endsWith("register"))) {
+        if (session == null && !(uri.endsWith("html") || uri.endsWith("login") || uri.endsWith("register") ||  uri.endsWith("home") )) {
             logger.error("Unauthorized access request");
-            response.sendRedirect("login.html");
+            response.sendRedirect("/login.html");
         } else {
             // pass the request along the filter chain
             chain.doFilter(request, response);

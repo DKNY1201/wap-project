@@ -31,7 +31,7 @@
             <h2>User: <c:out value="${user}" /></h2>
         </c:when>
         <c:otherwise>
-            <c:redirect url="login.html" />
+            <c:redirect url="../../login.html" />
         </c:otherwise>
     </c:choose>
 

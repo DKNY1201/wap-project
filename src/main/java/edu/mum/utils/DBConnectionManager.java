@@ -1,4 +1,4 @@
-package edu.mum.util;
+package edu.mum.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

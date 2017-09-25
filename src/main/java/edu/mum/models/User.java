@@ -6,24 +6,36 @@ import java.io.Serializable;
  * Created by Bi on 9/24/17.
  */
 public class User implements Serializable {
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String country;
+    private int yearOfBirth;
+    private int gender;
     private int id;
 
-    public User(String name, String email, String country, int id) {
-        this.name = name;
+    public User(int id, String firstName, String lastName, String email, int yearOfBirth, int gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.country = country;
+        this.yearOfBirth = yearOfBirth;
+        this.gender = gender;
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -34,12 +46,20 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getCountry() {
-        return country;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
     public int getId() {
@@ -52,6 +72,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "Name = " + this.name + ", Email = " + this.email + ", Country = " + this.country;
+        return "Name = " + this.firstName + " " + this.lastName + ", Email = " + this.email + ", Gender = " + this.gender + ", Year of Birth = " + this.yearOfBirth;
     }
 }

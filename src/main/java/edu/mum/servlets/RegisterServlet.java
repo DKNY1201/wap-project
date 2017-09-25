@@ -12,7 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import edu.mum.util.Constants;
+import edu.mum.repositories.UserRepository;
+import edu.mum.models.User;
+import edu.mum.utils.Constants;
 import org.apache.log4j.Logger;
 
 /**
@@ -63,37 +65,48 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
             rd.forward(request, response);
         } else {
-            Connection con = (Connection) getServletContext().getAttribute("DBConnection");
-            PreparedStatement ps = null;
-            try {
-                ps = con.prepareStatement("insert into Users(firstName, lastName, email, password, yearOfBirth, gender) values (?,?,?,?,?,?)");
-                ps.setString(1, firstName);
-                ps.setString(2, lastName);
-                ps.setString(3, email);
-                ps.setString(4, password);
-                ps.setString(5, yearOfBirth);
-                ps.setString(6, gender);
+            UserRepository userRepository = new UserRepository();
 
-                ps.execute();
-
-                logger.info("User registered with email=" + email);
-
-                //forward to login page to login
-                RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_LOG_IN);
-                PrintWriter out = response.getWriter();
-                out.println("<font color=green>Registration successful, please login below.</font>");
-                rd.include(request, response);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                logger.error("Database connection problem");
-                throw new ServletException("DB Connection problem.");
-            } finally {
-//                try {
-//                    ps.close();
-//                } catch (SQLException e) {
-//                    logger.error("SQLException in closing PreparedStatement");
-//                }
+            if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
+                User user = userRepository.getUser(email, password);
+                if (user != null) {
+                    request.getSession().setAttribute("sesUser", user);
+                    response.sendRedirect(request.getContextPath());
+                }
             }
+//
+//            Connection con = (Connection) getServletContext().getAttribute("DBConnection");
+//            PreparedStatement ps = null;
+//            try {
+//
+//                ps = con.prepareStatement("insert into Users(firstName, lastName, email, password, yearOfBirth, gender) values (?,?,?,?,?,?)");
+//                ps.setString(1, firstName);
+//                ps.setString(2, lastName);
+//                ps.setString(3, email);
+//                ps.setString(4, password);
+//                ps.setString(5, yearOfBirth);
+//                ps.setString(6, gender);
+//
+//                ps.execute();
+//
+//                logger.info("User registered with email=" + email);
+//
+//                //forward to login page to login
+//                RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_LOG_IN);
+//                PrintWriter out = response.getWriter();
+//                out.println("<font color=green>Registration successful, please login below.</font>");
+//                rd.include(request, response);
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//                logger.error("Database connection problem");
+//                throw new ServletException("DB Connection problem.");
+//            } finally {
+////                try {
+////                    ps.close();
+////                } catch (SQLException e) {
+////                    logger.error("SQLException in closing PreparedStatement");
+////                }
+//            }
         }
     }
 

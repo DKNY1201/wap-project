@@ -2,7 +2,8 @@ package edu.mum.listeners; /**
  * Created by Bi on 9/24/17.
  */
 
-import edu.mum.util.DBConnectionManager;
+import edu.mum.repositories.BaseRepository;
+import edu.mum.utils.DBConnectionManager;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.xml.DOMConfigurator;
 
@@ -33,15 +34,7 @@ public class AppContextListener implements ServletContextListener {
         String user = ctx.getInitParameter("DBUSER");
         String pwd = ctx.getInitParameter("DBPWD");
 
-        try {
-            DBConnectionManager connectionManager = new DBConnectionManager(dbURL, user, pwd);
-            ctx.setAttribute("DBConnection", connectionManager.getConnection());
-            System.out.println("DB Connection initialized successfully.");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        BaseRepository.SetConnection(dbURL, user, pwd);
 
         //initialize log4j
         String log4jConfig = ctx.getInitParameter("log4j-config");

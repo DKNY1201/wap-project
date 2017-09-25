@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import edu.mum.util.Constants;
+import edu.mum.utils.Constants;
 
 /**
  * Created by Bi on 9/23/17.

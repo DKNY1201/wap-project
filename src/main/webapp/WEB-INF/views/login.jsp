@@ -13,9 +13,9 @@
 </head>
 <body>
 	<tags:header></tags:header>
-	<div id="main" class="container">
+	<div id="main" class="container wrapper">
 		<form id="login-form" class="form-horizontal" action="login" method="POST" novalidate="novalidate">
-			<h2>Log in</h2>
+			<h2 class="title">Log in</h2>
 			<div class="form-group">
 				<label for="inputEmail" class="col-sm-3 control-label">Email</label>
 				<div class="col-sm-9">

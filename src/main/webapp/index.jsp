@@ -14,7 +14,7 @@
 <body>
 <tags:header></tags:header>
 
-<section id="homepage" class="container-fluid">
+<div id="homepage" class="container-fluid wrapper">
     <div class="row">
         <div class="col">
             <div class="banner">
@@ -383,7 +383,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 <tags:footer></tags:footer>
 <tags:basejs></tags:basejs>
 </body>

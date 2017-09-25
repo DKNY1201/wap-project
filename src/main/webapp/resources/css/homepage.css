@@ -1,0 +1,11 @@
+.banner {
+    background-image: url("../images/homepage-banner.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50%;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}

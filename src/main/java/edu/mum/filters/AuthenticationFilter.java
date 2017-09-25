@@ -9,6 +9,8 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
+import edu.mum.util.Constants;
+
 /**
  * Created by Bi on 9/23/17.
  */
@@ -27,15 +29,21 @@ public class AuthenticationFilter implements Filter {
         String uri = request.getRequestURI();
         logger.info("Requested Resource::" + uri);
 
-        HttpSession session = request.getSession(false);
 
-        if (session == null && !(uri.endsWith("html") || uri.endsWith("login") || uri.endsWith("register") ||  uri.endsWith("home") )) {
-            logger.error("Unauthorized access request");
-            response.sendRedirect("/login.html");
-        } else {
-            // pass the request along the filter chain
-            chain.doFilter(request, response);
+        String servletPath = request.getServletPath().toLowerCase();
+
+        for (String securePath: Constants.SECURE_PATHS) {
+            if (servletPath.startsWith(securePath)) {
+                HttpSession session = request.getSession(false);
+                if (session == null) {
+                    response.sendRedirect(request.getContextPath() + Constants.URL_LOGIN);
+                    return;
+                }
+
+            }
         }
+
+        chain.doFilter(request, response);
     }
 
     public void init(FilterConfig config) throws ServletException {

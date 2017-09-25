@@ -1,18 +1,8 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
-<div id="footer">
-	<div class="container">
-		<ul>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact Us</a></li>
-		</ul>
-		<p>
-			Developed by <strong>Lam Nguyen</strong>, <strong>Duc
-				Nguyen</strong>, and <strong>Tuan Hoang</strong> with all the love in cs472
-			course.
-		</p>
-		<p>
-			Special thank to <strong>Professor Rakesh Shrestha</strong> for all
-			of the guidances throughout the project.
-		</p>
+<footer id="footer" class="container">
+	<div class="row">
+		<div class="col">
+			<p>BlaBlaCar is the world's leading carpooling community which enables low-cost city-to-city travel by connecting people with drivers going the same way. Next time you travel, share a car journey and get there together.</p>
+		</div>
 	</div>
-</div>
+</footer>

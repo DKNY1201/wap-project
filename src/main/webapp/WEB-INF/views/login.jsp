@@ -38,7 +38,7 @@
 				<button class="btn btn-primary" type="submit">Log in</button>
 			</div>
 			<div class="form-group">
-				<em>If you are a new user, please click <a href="<c:url value='/register'/>">here</a> to register.</em>
+				If you are a new user, please click <a href="<c:url value='/register'/>">here</a> to register.
 			</div>
 		</form>
 	</div>

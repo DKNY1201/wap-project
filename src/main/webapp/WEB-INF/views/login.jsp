@@ -14,7 +14,7 @@
 <body>
 	<tags:header></tags:header>
 	<div id="main" class="container wrapper">
-		<form id="login-form" class="form-horizontal" action="login" method="POST">
+		<form id="login-form" action="login" method="POST">
 			<h2 class="title">Log in</h2>
 			<div class="form-group">
 				<div class="has-error">${errorMsg}</div>

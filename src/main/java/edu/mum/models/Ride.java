@@ -1,50 +1,29 @@
 package edu.mum.models;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import edu.mum.models.*;
 
 /**
  * Created by Bi on 9/25/17.
  */
 
-enum MAX_LUGGAGE {
-    Small, Medium, Lagre
-}
-
-enum PICKUP_FLEXIBILITY {
-    RightOnTime("Right on time"),
-    Ina15minutewindow("In a 15 minute window"),
-    Ina30minutewindow("In a 30 minute window"),
-    Ina1hourwindow("In a 1 hour window"),
-    Ina2hourwindow("RIn a 2 hour window");
-
-    private String name;
-
-    PICKUP_FLEXIBILITY(String name) {
-        this.name = name;
-    }
-
-    public String displayName() {
-        return this.name;
-    }
-
-}
-
 public class Ride implements Serializable {
+    private int id;
     private String pickupPoint;
     private String dropoffPoint;
     private boolean isRoundTrip;
-    private LocalDateTime startDatetime;
-    private LocalDateTime returnDatetime;
+    private String startDatetime;
+    private String returnDatetime;
     private int price;
     private int numOfSeat;
     private String startRideDetail;
     private String returnRideDetail;
     private MAX_LUGGAGE maxLuggage;
     private PICKUP_FLEXIBILITY pickupFlexibility;
-    private String emailUser;
+    private User user;
 
-    public Ride(String pickupPoint, String dropoffPoint, boolean isRoundTrip, LocalDateTime startDatetime, LocalDateTime returnDatetime, int price, int numOfSeat, String startRideDetail, String returnRideDetail, MAX_LUGGAGE maxLuggage, PICKUP_FLEXIBILITY pickupFlexibility, String emailUser) {
+    public Ride(int id, String pickupPoint, String dropoffPoint, boolean isRoundTrip, String startDatetime, String returnDatetime, int price, int numOfSeat, String startRideDetail, String returnRideDetail, MAX_LUGGAGE maxLuggage, PICKUP_FLEXIBILITY pickupFlexibility, User user) {
+        this.id = id;
         this.pickupPoint = pickupPoint;
         this.dropoffPoint = dropoffPoint;
         this.isRoundTrip = isRoundTrip;
@@ -56,7 +35,15 @@ public class Ride implements Serializable {
         this.returnRideDetail = returnRideDetail;
         this.maxLuggage = maxLuggage;
         this.pickupFlexibility = pickupFlexibility;
-        this.emailUser = emailUser;
+        this.user = user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPickupPoint() {
@@ -83,19 +70,19 @@ public class Ride implements Serializable {
         isRoundTrip = roundTrip;
     }
 
-    public LocalDateTime getStartDatetime() {
+    public String getStartDatetime() {
         return startDatetime;
     }
 
-    public void setStartDatetime(LocalDateTime startDatetime) {
+    public void setStartDatetime(String startDatetime) {
         this.startDatetime = startDatetime;
     }
 
-    public LocalDateTime getReturnDatetime() {
+    public String getReturnDatetime() {
         return returnDatetime;
     }
 
-    public void setReturnDatetime(LocalDateTime returnDatetime) {
+    public void setReturnDatetime(String returnDatetime) {
         this.returnDatetime = returnDatetime;
     }
 
@@ -147,11 +134,11 @@ public class Ride implements Serializable {
         this.pickupFlexibility = pickupFlexibility;
     }
 
-    public String getEmailUser() {
-        return emailUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

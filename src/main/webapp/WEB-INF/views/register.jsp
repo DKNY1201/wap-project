@@ -14,7 +14,7 @@
 <body>
 <tags:header></tags:header>
 <div id="register" class="container wrapper">
-    <form id="register-form" class="form-horizontal regular-form" action="register" method="POST">
+    <form id="register-form" class="form-horizontal regular-form" action="register" method="POST" novalidate>
         <h2 class="title">Sign up</h2>
         <div class="form-group">
             <div class="has-error">${errorMsg}</div>
@@ -33,14 +33,14 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-fn"><i class="fa fa-font" aria-hidden="true"></i></span>
                 <input type="text" name="firstname" class="form-control" placeholder="First name" aria-label="firstname"
-                       aria-describedby="basic-addon-fn" required value="${ not empty firstname ? firstname : '' }">
+                       aria-describedby="basic-addon-fn" required value="${param.firstname}">
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-ln"><i class="fa fa-font" aria-hidden="true"></i></span>
                 <input type="text" name="lastname" class="form-control" placeholder="Last name" aria-label="lastname"
-                       aria-describedby="basic-addon-ln" required>
+                       aria-describedby="basic-addon-ln" required value="${param.lastname}">
             </div>
         </div>
 
@@ -49,7 +49,7 @@
                 <span class="input-group-addon" id="basic-addon-email"><i class="fa fa-envelope-o"
                                                                           aria-hidden="true"></i></span>
                 <input type="email" name="email" class="form-control" placeholder="Email" aria-label="email"
-                       aria-describedby="basic-addon-email" pattern="[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}" >
+                       aria-describedby="basic-addon-email" pattern="[a-zA-Z0-9_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}"  value="${param.email}">
             </div>
         </div>
         <div class="form-group">
@@ -63,7 +63,7 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-cpw"><i class="fa fa-lock"
                                                                         aria-hidden="true"></i></span>
-                <input type="text" name="confirm-password" class="form-control" placeholder="Confirm password"
+                <input type="password" name="confirm-password" class="form-control" placeholder="Confirm password"
                        aria-label="confirm-password" aria-describedby="basic-addon-cpw" required pattern=".{8,}">
             </div>
         </div>
@@ -88,9 +88,7 @@
         </div>
 
         <div class="form-group">
-            <p class="col-sm-12">
-                <em>If you are a registered user, please click <a href="<c:url value='/login'/>">here</a> to login.</em>
-            </p>
+            If you are a registered user, please click <a href="<c:url value='/login'/>">here</a> to login.
         </div>
     </form>
 </div>

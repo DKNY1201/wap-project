@@ -17,9 +17,11 @@
 			<li class="nav-item">
 				<a class="nav-link" href="register">Sign up</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="login">Log in</a>
-			</li>
+			<c:if test="${empty sesUser}">
+				<li class="nav-item">
+					<a class="nav-link" href="login">Log in</a>
+				</li>
+			</c:if>
 			<c:if test="${not empty sesUser}">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

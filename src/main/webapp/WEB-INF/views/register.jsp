@@ -14,7 +14,7 @@
 <body>
 <tags:header></tags:header>
 <div id="register" class="container wrapper">
-    <form id="register-form" class="form-horizontal regular-form" action="register" method="POST" novalidate>
+    <form id="register-form" action="register" method="POST">
         <h2 class="title">Sign up</h2>
         <div class="form-group">
             <div class="has-error">${errorMsg}</div>
@@ -68,18 +68,13 @@
             </div>
         </div>
         <div class="form-group">
-            <select class="form-control" id="year-of-birth" name="year-of-birth" required>
+            <select class="form-control" id="year-of-birth" name="yearOfBirth" required>
                 <option value="0">Year of birth</option>
-                <option value="1990">1990</option>
-                <option value="1991">1991</option>
-                <option value="1992">1992</option>
-                <option value="1993">1993</option>
-                <option value="1994">1994</option>
-                <option value="1995">1995</option>
-                <option value="1996">1996</option>
-                <option value="1997">1997</option>
-                <option value="1998">1998</option>
-                <option value="1999">1999</option>
+                <c:forEach begin="1900" end="2010" var="i">
+                    <option value="${i}" <c:if test="${param.yearOfBirth == i}">selected</c:if>>
+                        <c:out value="${i}" />
+                    </option>
+                </c:forEach>
             </select>
         </div>
 

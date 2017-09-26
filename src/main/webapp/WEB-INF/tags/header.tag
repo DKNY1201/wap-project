@@ -12,7 +12,7 @@
 				<a class="nav-link" href="#">Find a ride <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Offer a ride</a>
+				<a class="nav-link" href="offerride">Offer a ride</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="register">Sign up</a>
@@ -25,7 +25,7 @@
 			<c:if test="${not empty sesUser}">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Dropdown link
+						<c:out value="${sesUser.firstName} ${sesUser.lastName}" />
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="/">Dashboard</a>

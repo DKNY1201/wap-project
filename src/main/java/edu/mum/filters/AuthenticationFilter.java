@@ -39,7 +39,6 @@ public class AuthenticationFilter implements Filter {
                     response.sendRedirect(request.getContextPath() + Constants.URL_LOGIN);
                     return;
                 }
-
             }
         }
 

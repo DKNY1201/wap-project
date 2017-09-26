@@ -9,7 +9,7 @@
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">Find a ride <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="search">Find a ride <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="offerride">Offer a ride</a>

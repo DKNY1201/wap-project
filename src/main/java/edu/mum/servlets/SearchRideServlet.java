@@ -24,18 +24,18 @@ public class SearchRideServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(SearchRideServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RideRepository rideRepository = new RideRepository();
 
-        List<Ride> rides = rideRepository.getRides("fa");
+        String pickupPoint = request.getParameter("pickupPoint") != null ? request.getParameter("pickupPoint") : "";
+        String dropoffPoint = request.getParameter("dropoffPoint") != null ? request.getParameter("dropoffPoint") : "";
+
+        RideRepository rideRepository = new RideRepository();
+        List<Ride> rides = rideRepository.getRides(pickupPoint, dropoffPoint);
 
         request.setAttribute("rides", rides);
         request.getRequestDispatcher(Constants.URL_JSP_SEARCH).forward(request, response);
-//        for (Ride ride: rides) {
-//            logger.info("Got ride: Pick up point: " + ride.getPickupPoint());
-//        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       doGet(request, response);
+       doPost(request, response);
     }
 }

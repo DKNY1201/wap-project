@@ -19,7 +19,8 @@
         <div class="col">
             <div class="banner">
                 <form action="search" method="post">
-
+                    <input type="text" name="pickupPoint">
+                    <input type="text" name="dropoffPoint">
                     <button type="submit">search</button>
                 </form>
 

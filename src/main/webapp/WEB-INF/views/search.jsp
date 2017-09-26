@@ -14,90 +14,55 @@
 <body>
 <tags:header></tags:header>
 <div id="search" class="container wrapper">
+    <form action="search" method="post" id="search-form">
+        <div class="form-group">
+            <div class="row">
+                <div class="input-group col-sm-5">
+                    <span class="input-group-addon" id="basic-addon-pp"><i class="fa fa-font" aria-hidden="true"></i></span>
+                    <input type="text" name="pickupPoint" class="form-control" placeholder="Pick up point" aria-label="pickupPoint"
+                           aria-describedby="basic-addon-pp" required value="${param.pickupPoint}">
+                </div>
+                <div class="input-group col-sm-5">
+                    <span class="input-group-addon" id="basic-addon-dp"><i class="fa fa-font" aria-hidden="true"></i></span>
+                    <input type="text" name="dropoffPoint" class="form-control" placeholder="Drop off point" aria-label="dropoffPoint"
+                           aria-describedby="basic-addon-dp" required value="${param.dropoffPoint}">
+                </div>
+                <button type="submit" class="col-sm-2 btn btn-danger">search</button>
+            </div>
+        </div>
+    </form>
     <c:forEach items="${rides}" var="ride">
         <div class="row">
             <div class="col-sm-3">
-                <div class="ProfileCard ProfileCard--condensed span2">
-                    <div class="ProfileCard-head">
-                        <div class="ProfileCard-picture">
-                            <div class="PhotoWrapper PhotoWrapper--medium">
-                                <img src="https://d2kwny77wxvuie.cloudfront.net/user/iwiJ5ug7RqGr34CwzsjA2w/thumbnail_72x72.jpeg"
-                                     width="72" height="72" alt=""
-                                     class="PhotoWrapper-user PhotoWrapper-user--medium u-rounded ">
-                            </div>
-                        </div>
-                        <div class="ProfileCard-infosBlock">
-                            <h2 class="ProfileCard-info ProfileCard-info--name u-truncate">
-                                    ${ride.user.firstName}
-                                ${ride.pickupPoint}
-                            </h2>
-                            <div class="ProfileCard-info">
-                                    ${ride.dropoffPoint}<br>
-                            </div>
-                            <div class="ProfileCard-info u-blue">
-                                ID verified
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ProfileCard-row">
-                        <p class="ratings-container">
-                            <i class="bbc-icon2-star u-yellow" aria-hidden="true"></i>
-                            <span class="u-textBold u-darkGray">4.7/5</span><span class="u-gray"> - 153 ratings</span>
-                        </p>
-                    </div>
-                    <div class="ProfileCard-row">
-                        <span class="tip user-trust-fb u-gray" data-hasqtip="166" oldtitle="Number of Facebook friends"
-                              title="">
-                            <i class="bbc-icon2-facebook-logo u-facebook"></i>
-                            98 friends
-                        </span>
-                    </div>
+                <div class="info-box">
+                    <img src="<c:url value='/resources/images/avatar.jpg' />" width="180">
+                    <p>${ride.user.firstName} ${ride.user.lastName}</p>
+                    <p>${ride.user.yearOfBirth}</p>
+                </div>
+                <div class="email">${ride.user.email}</div>
+                <div class="gender">
+                    <c:choose>
+                        <c:when test = "${ride.user.gender == 0}">
+                            Female
+                        </c:when>
+                        <c:otherwise>
+                            Male
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <div class="col-sm-6">
-                <h3 class="time u-darkGray" itemprop="startDate" content="2017-09-27">
-                    Tomorrow - 16:20
-                </h3>
-                <h3 class="fromto" itemprop="name">
-                    <span class="from trip-roads-stop">London</span>
-                    <span class="arrow-ie">→</span>
-                    <span class="trip-roads-stop">Manchester</span>
-                </h3>
-                <dl class="geo-from">
-                    <dt>
-                        <i class="bbc-icon2-circle first size16 green" title="Pick-up point"></i>
-                    </dt>
-                    <dd class="js-tip-custom" data-hasqtip="189" oldtitle="Pick-up" title="">
-                        london
-                    </dd>
-                </dl>
-                <dl class="geo-to">
-                    <dt>
-                        <i class="bbc-icon2-circle first size16 red" title="Drop-off point"></i>
-                    </dt>
-                    <dd class="js-tip-custom" data-hasqtip="190" oldtitle="Drop-off" title="">
-                        Manchester
-                    </dd>
-                </dl>
+                <h3>${ride.startDatetime}</h3>
+                <p class="pickupPoint"><i class="fa fa-play-circle" aria-hidden="true"></i> ${ride.pickupPoint}</p>
+                <p class="dropoffPoint"><i class="fa fa-stop-circle-o" aria-hidden="true"></i> ${ride.dropoffPoint}</p>
             </div>
             <div class="col-sm-3">
-                <div class="price price-black" itemprop="location">
-                    <strong>
-                        <span class="">
-                                £23<span class="size20">.50</span></span> </strong>
-                    <span class="priceUnit">per passenger</span>
-                </div>
-                <div class="availability">
-                    <strong>3</strong> <span>available seats</span>
-                </div>
-
-                <i class="bbc-icon2-instant size26 u-yellow u-cell u-right no-margin-right tip" aria-hidden="true"
-                   data-hasqtip="214" oldtitle="Driver approval: Instant" title=""></i>
-                <span class="u-visuallyHidden">Driver approval: Instant</span>
-
-                <i class="bbc-icon2-comfort-plus size26 u-blue u-cell u-right no-margin-right tip" aria-hidden="true"
-                   data-hasqtip="215" oldtitle="Trevor S guarantees max. 2 people in the back seats" title=""></i>
-                <span class="u-visuallyHidden">Trevor S guarantees max. 2 people in the back seats</span>
+                <p class="price">
+                    <strong>$${ride.price}</strong> per passenger
+                </p>
+                <p class="seats">
+                    <strong>${ride.numOfSeat}</strong> available seats
+                </p>
             </div>
         </div>
     </c:forEach>

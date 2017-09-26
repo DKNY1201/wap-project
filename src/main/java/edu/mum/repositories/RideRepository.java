@@ -23,7 +23,7 @@ public class RideRepository extends BaseRepository<Ride> {
 					"numOfSeat, startRideDetail, returnRideDetail, maxLuggage, pickupFlexibility, emailUser) " +
 					"values (?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String GET_RIDE_BY_PICKUP_DROP_POINTS = "SELECT * FROM Ride WHERE pickupPoint LIKE " +
-			"? ORDER BY price";
+			"? AND dropoffPoint LIKE ? ORDER BY price";
 	private static final String UPDATE_USER = 
 			"UPDATE User SET email = ?, firstName = ?, lastName = ?, gender = ?, birthday = ? WHERE id = ?";
 
@@ -68,11 +68,11 @@ public class RideRepository extends BaseRepository<Ride> {
 				numOfSeat, startRideDetail, returnRideDetail, maxLuggage, pickupFlexibility, emailUser);
 	}
 
-	public List<Ride> getRides(String keyword) {
-		if (keyword == null || keyword.isEmpty()) {
+	public List<Ride> getRides(String pickupPoint, String dropoffPoint) {
+		if (pickupPoint == null || pickupPoint.isEmpty() || dropoffPoint == null || dropoffPoint.isEmpty()) {
 			return super.getList(GET_ALL_RIDES, getRide);
 		} else {
-			return super.getList(GET_RIDE_BY_PICKUP_DROP_POINTS, getRide, "%" + keyword + "%");
+			return super.getList(GET_RIDE_BY_PICKUP_DROP_POINTS, getRide, "%" + pickupPoint + "%", "%" + dropoffPoint + "%");
 		}
 	}
 }

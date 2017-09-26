@@ -12,8 +12,8 @@ import edu.mum.utils.PasswordUtils;
 public class UserRepository extends BaseRepository<User> {
 	private static final String GET_USER_BY_EMAIL_PASSWORD = 
 			"SELECT * FROM Users WHERE email=? AND password=? LIMIT 1";
-	private static final String GET_USER_BY_ID = 
-			"SELECT * FROM User WHERE id=? LIMIT 1";
+	private static final String GET_USER_BY_EMAIL =
+			"SELECT * FROM Users WHERE email=? LIMIT 1";
 	private static final String CREATE_USER = 
 			"insert into Users(firstName, lastName, email, password, yearOfBirth, gender) values (?,?,?,?,?,?)";
 	private static final String UPDATE_USER = 
@@ -51,8 +51,8 @@ public class UserRepository extends BaseRepository<User> {
 		return user;
 	}
 	
-	public User getUser(int userId) {
-		User user = super.get(GET_USER_BY_ID, getUser, String.valueOf(userId));
+	public User getUserByEmail(String email) {
+		User user = super.get(GET_USER_BY_EMAIL, getUser, email);
 		
 		if (user != null) { 
 			logger.info("User found with details=" + user);

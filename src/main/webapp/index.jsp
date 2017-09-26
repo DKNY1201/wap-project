@@ -18,7 +18,10 @@
     <div class="row">
         <div class="col">
             <div class="banner">
+                <form action="search" method="post">
 
+                    <button type="submit">search</button>
+                </form>
 
                 <div class="Home u-flex">
                     <article id="homepage-block-main" class="HomeBlock HomeBlock-main">

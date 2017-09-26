@@ -7,15 +7,17 @@ public class Constants {
 
     public static final String SITE_NAME = "Chalo Chalo in car";
 
-    public static final String[] SECURE_PATHS = {"/dashboard", "/logout"};
+    public static final String[] SECURE_PATHS = {"/dashboard", "/logout", "/offerride"};
 
     // URL
-    public static final String URL_LOGIN = "login.jsp";
+    public static final String URL_LOGIN = "/login";
     public static final String URL_JSP_SIGN_UP = "/WEB-INF/views/register.jsp";
     public static final String URL_JSP_LOG_IN = "/WEB-INF/views/login.jsp";
     public static final String URL_JSP_LOG_OUT = "/WEB-INF/views/logout.jsp";
     public static final String URL_JSP_OFFER_RIDE = "/WEB-INF/views/offerride.jsp";
+    public static final String URL_JSP_SEARCH = "/WEB-INF/views/search.jsp";
     public static final String HOMEPAGE = "index.jsp";
+
 
     // Error messages
     public static final String WRONG_EMAIL_PASSWORD = "Username or password is invalid";

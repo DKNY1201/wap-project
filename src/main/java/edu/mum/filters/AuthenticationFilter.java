@@ -35,7 +35,7 @@ public class AuthenticationFilter implements Filter {
         for (String securePath: Constants.SECURE_PATHS) {
             if (servletPath.startsWith(securePath)) {
                 HttpSession session = request.getSession(false);
-                if (session == null) {
+                if (session == null || session.getAttribute("sesUser") == null) {
                     response.sendRedirect(request.getContextPath() + Constants.URL_LOGIN);
                     return;
                 }

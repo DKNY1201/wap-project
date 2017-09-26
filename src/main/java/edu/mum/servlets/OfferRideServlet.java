@@ -64,7 +64,6 @@ public class OfferRideServlet extends HttpServlet {
             errorMsg += "<br/>" +  Constants.START_DATETIME_AFTER_RETURN_DATETIME;
         }
 
-
         if (price == null || price.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_PRICE;
         }

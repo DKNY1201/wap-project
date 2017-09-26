@@ -63,6 +63,7 @@
                 <p class="seats">
                     <strong>${ride.numOfSeat}</strong> available seats
                 </p>
+                <p><a class="btn btn-info" href="ridedetail?rideID=${ride.id}">Detail</a></p>
             </div>
         </div>
     </c:forEach>

@@ -16,8 +16,8 @@ public class Constants {
     public static final String URL_JSP_LOG_OUT = "/WEB-INF/views/logout.jsp";
     public static final String URL_JSP_OFFER_RIDE = "/WEB-INF/views/offerride.jsp";
     public static final String URL_JSP_SEARCH = "/WEB-INF/views/search.jsp";
+    public static final String URL_JSP_RIDEDETAIL = "/WEB-INF/views/ridedetail.jsp";
     public static final String HOMEPAGE = "index.jsp";
-
 
     // Error messages
     public static final String WRONG_EMAIL_PASSWORD = "Username or password is invalid";

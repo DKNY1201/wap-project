@@ -250,7 +250,7 @@
                                 </div>
                                 <div class="HomeBlock-content HomeBlock-content--even">
                                     <h2 class="HomeBlock-title">Driving somewhere soon?</h2>
-                                    <p class="u-marginNone u-space-4">Carpooling with BlaBlaCar means you save and others can travel.</p>
+                                    <p class="u-marginNone u-space-4">Carpooling with Chalo Chalo in Car means you save and others can travel.</p>
                                     <a href="/offer-seats" class="Home-button Home-button--short c-button c-button--primary c-button--wide">Offer a ride</a>
                                 </div>
                             </div>
@@ -259,7 +259,7 @@
 
                     <article class="HomeBlock" id="homepage-block-media">
                         <div class="HomeBlock-inner">
-                            <h2 class="HomeBlock-title HomeBlock-title--extraPadding">3 things you'll love about BlaBlaCar</h2>
+                            <h2 class="HomeBlock-title HomeBlock-title--extraPadding">3 things you'll love about Chalo Chalo in Car</h2>
 
                             <ol class="HomeColumns u-clearfix">
 
@@ -340,16 +340,16 @@
 
                     <article class="HomeBlock" id="homepage-block-blog">
                         <div class="HomeBlock-inner">
-                            <h2 class="HomeBlock-title">Carpooling with BlaBlaCar</h2>
+                            <h2 class="HomeBlock-title">Carpooling with Chalo Chalo in Car</h2>
                             <div class="HomeBlock-content u-paddingNone">
                                 <a class="HomeBlock-link" href="/blablalife/">Visit BlaBlaLife</a>
                                 <ul class="HomeColumns u-clearfix">
                                     <li class="BlogThumb HomeColumn">
                                         <a href="/blablalife/going-places/tips/rideshare-football-games">
                                             <span class="BlogThumb-image u-space-4" style="background-image: url(https://s3-eu-west-1.amazonaws.com/bbcwpe-dev/wp-content/uploads/2015/11/24135613/Take-BlaBla-to-Away-Day-Football-300x300.jpg);" aria-hidden="true"></span>
-                                            <h3 class="BlogThumb-title HomeBlock-title HomeBlock-title--secondary u-darkGray">Take a BlaBlaCar to your next football games!</h3>
+                                            <h3 class="BlogThumb-title HomeBlock-title HomeBlock-title--secondary u-darkGray">Take a Chalo Chalo in Car to your next football games!</h3>
                                             <p class="u-marginNone u-gray">
-                                                Go Football mad with BlaBlaCar this season!
+                                                Go Football mad with Chalo Chalo in Car this season!
 
                                                 <span class="HomeBlock-more">Read more...</span>
                                             </p>

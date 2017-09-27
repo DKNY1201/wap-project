@@ -14,11 +14,9 @@
 <body>
 <tags:header></tags:header>
 <div id="register" class="container wrapper">
-    <form id="register-form" action="register" method="POST">
+    <form id="register-form" action="register" method="POST" novalidation>
         <h2 class="title">Sign up</h2>
-        <div class="form-group">
-            <div class="has-error">${errorMsg}</div>
-        </div>
+
         <div class="form-check">
             <label class="form-check-label">
                 <input class="form-check-input" type="radio" name="gender" value="0" checked>
@@ -28,6 +26,7 @@
                 <input class="form-check-input" type="radio" name="gender" value="1">
                 Male
             </label>
+            <small name="errGender" class="form-text text-muted">${errGender}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -35,6 +34,7 @@
                 <input type="text" name="firstname" class="form-control" placeholder="First name" aria-label="firstname"
                        aria-describedby="basic-addon-fn" required value="${param.firstname}">
             </div>
+            <small name="errFirstname" class="form-text text-muted" >${errFirstname}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -42,6 +42,7 @@
                 <input type="text" name="lastname" class="form-control" placeholder="Last name" aria-label="lastname"
                        aria-describedby="basic-addon-ln" required value="${param.lastname}">
             </div>
+            <small name="errLastname" class="form-text text-muted">${errLastname}</small>
         </div>
 
         <div class="form-group">
@@ -51,6 +52,7 @@
                 <input type="email" name="email" class="form-control" placeholder="Email" aria-label="email"
                        aria-describedby="basic-addon-email" pattern="[a-zA-Z0-9_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}"  value="${param.email}">
             </div>
+            <small name="errEmail" class="form-text text-muted">${errEmail}&nbsp;${errEmailVerify}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -58,6 +60,7 @@
                 <input type="password" name="password" class="form-control" placeholder="Password (min .8 characters)"
                        aria-label="password" aria-describedby="basic-addon-pw" required pattern=".{8,}">
             </div>
+            <small name="errPassword" class="form-text text-muted">${errPassword}&nbsp;${errPasswordPattern}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -66,6 +69,7 @@
                 <input type="password" name="confirm-password" class="form-control" placeholder="Confirm password"
                        aria-label="confirm-password" aria-describedby="basic-addon-cpw" required pattern=".{8,}">
             </div>
+            <small name="errConfirmPassword" class="form-text text-muted">${errConfirmPassword}&nbsp;${errPasswordNotEqual}</small>
         </div>
         <div class="form-group">
             <select class="form-control" id="year-of-birth" name="yearOfBirth" required>
@@ -76,6 +80,7 @@
                     </option>
                 </c:forEach>
             </select>
+            <small name="errYearOfBirth" class="form-text text-muted">${errYearOfBirth}</small>
         </div>
 
         <div class="form-group">

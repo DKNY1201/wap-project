@@ -36,6 +36,8 @@ public class AuthenticationFilter implements Filter {
             if (servletPath.startsWith(securePath)) {
                 HttpSession session = request.getSession(false);
                 if (session == null || session.getAttribute("sesUser") == null) {
+                    request.setAttribute("backURL", request.getHeader("Referer"));
+                    logger.info("backURL main: " + request.getHeader("Referer"));
                     response.sendRedirect(request.getContextPath() + Constants.URL_LOGIN);
                     return;
                 }

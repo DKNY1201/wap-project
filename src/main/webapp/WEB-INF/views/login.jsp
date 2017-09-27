@@ -32,6 +32,7 @@
 					<span class="input-group-addon" id="basic-addon-pw"><i class="fa fa-lock" aria-hidden="true"></i></span>
 					<input type="password" name="password" class="form-control" placeholder="Password (min .8 characters)"
 						   aria-label="password" aria-describedby="basic-addon-pw" required pattern=".{8,}">
+					<input type="hidden" name="backURL" value="${backURL}">
 				</div>
 			</div>
 			<div class="form-group">

@@ -22,8 +22,6 @@ public class RideRepository extends BaseRepository<Ride> {
 					"values (?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String GET_RIDE_BY_PICKUP_DROP_POINTS =
 			"SELECT * FROM Ride WHERE pickupPoint LIKE ? AND dropoffPoint LIKE ? ORDER BY price";
-	private static final String UPDATE_USER = 
-			"UPDATE User SET email = ?, firstName = ?, lastName = ?, gender = ?, birthday = ? WHERE id = ?";
 	private static final String GET_RIDE_BY_ID =
 			"SELECT * FROM Ride WHERE id = ? LIMIT 1";
 

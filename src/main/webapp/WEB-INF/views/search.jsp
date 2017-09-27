@@ -31,18 +31,18 @@
             </div>
         </div>
     </form>
-    <c:forEach items="${rides}" var="ride">
+    <c:forEach items="${rideBookings}" var="rideBooking">
         <div class="row">
             <div class="col-sm-3">
                 <div class="info-box">
                     <img src="<c:url value='/resources/images/avatar.jpg' />" width="180">
-                    <p>${ride.user.firstName} ${ride.user.lastName}</p>
-                    <p>${ride.user.yearOfBirth}</p>
+                    <p>${rideBooking.ride.user.firstName} ${rideBooking.ride.user.lastName}</p>
+                    <p>${rideBooking.ride.user.yearOfBirth}</p>
                 </div>
-                <div class="email">${ride.user.email}</div>
+                <div class="email">${rideBooking.ride.user.email}</div>
                 <div class="gender">
                     <c:choose>
-                        <c:when test = "${ride.user.gender == 0}">
+                        <c:when test = "${rideBooking.ride.user.gender == 0}">
                             Female
                         </c:when>
                         <c:otherwise>
@@ -52,18 +52,19 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <h3>${ride.startDatetime}</h3>
-                <p class="pickupPoint"><i class="fa fa-play-circle" aria-hidden="true"></i> ${ride.pickupPoint}</p>
-                <p class="dropoffPoint"><i class="fa fa-stop-circle-o" aria-hidden="true"></i> ${ride.dropoffPoint}</p>
+                <h3>${rideBooking.ride.startDatetime}</h3>
+                <p class="pickupPoint"><i class="fa fa-play-circle" aria-hidden="true"></i> ${rideBooking.ride.pickupPoint}</p>
+                <p class="dropoffPoint"><i class="fa fa-stop-circle-o" aria-hidden="true"></i> ${rideBooking.ride.dropoffPoint}</p>
             </div>
             <div class="col-sm-3">
                 <p class="price">
-                    <strong>$${ride.price}</strong> per passenger
+                    <strong>$${rideBooking.ride.price}</strong> per passenger
                 </p>
                 <p class="seats">
-                    <strong>${ride.numOfSeat}</strong> available seats
+
+                    <strong>${rideBooking.numOfBookedSeat}</strong> available seats
                 </p>
-                <p><a class="btn btn-info" href="ridedetail?rideID=${ride.id}">Detail</a></p>
+                <p><a class="btn btn-info" href="ridedetail?rideID=${rideBooking.ride.id}">Detail</a></p>
             </div>
         </div>
     </c:forEach>

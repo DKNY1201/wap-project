@@ -7,7 +7,7 @@ public class Constants {
 
     public static final String SITE_NAME = "Chalo Chalo in car";
 
-    public static final String[] SECURE_PATHS = {"/dashboard", "/logout", "/offerride"};
+    public static final String[] SECURE_PATHS = {"/dashboard", "/logout", "/offerride", "/booking_history"};
 
     // URL
     public static final String URL_LOGIN = "/login";

@@ -33,70 +33,78 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirm = request.getParameter("confirm-password");
         String yearOfBirth = request.getParameter("yearOfBirth");
-        String errorMsg = "";
+        boolean isError = false;
         if (gender == null) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errGender",Constants.EMPTY_GENDER );
 
         }
         if (firstName == null || firstName.equals("")) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errFirstname",Constants.EMPTY_FIRSTNAME );
         }
         if (lastName == null || lastName.equals("")) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errLastname",Constants.EMPTY_LASTNAME);
         }
         if (email == null || email.equals("")) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errEmail",Constants.EMPTY_EMAIL);
         }
         if (!ValidationUtils.verifyEmail(email)) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errEmailVerify",Constants.ERROR_EMAIL_PATTERN);
         }
         if (password == null || password.equals("")) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errPassword",Constants.EMPTY_PASSWORD);
         }
         if (!ValidationUtils.verifyPassword(password)) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errPasswordPattern",Constants.ERROR_PASSWORD_PATTERN);
 
         }
         if (passwordConfirm == null || passwordConfirm.equals("")) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errConfirmPassword",Constants.EMPTY_PASSWORD);
         }
         if (!passwordConfirm.equals(password)) {
+            isError = true;
             request.setAttribute("errPasswordNotEqual",Constants.NOT_SAME_CONFIRM_PASSWORD);
         }
         if (yearOfBirth == null || yearOfBirth.equals("0")) {
-            errorMsg += "error";
+            isError = true;
             request.setAttribute("errYearOfBirth",Constants.EMPTY_PASSWORD);
         }
 
+        UserRepository userRepository = new UserRepository();
 
-        if (!errorMsg.equals("")){
+        if(userRepository.getUserByEmail(email)!=null) {
+            isError = true;
+            request.setAttribute("errEmail", Constants.ERROR_EMAIL_EXISTS);
+        }
+
+
+        if (isError){
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
             rd.forward(request, response);
         } else {
-            UserRepository userRepository = new UserRepository();
 
-            if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
-                logger.info("Create an account with these information \n First name: " + firstName
-                        + ", " + " Last name: " + lastName
-                        + ", " + " Email: " + email
-                        + ", " + " Year of birth: " + yearOfBirth
-                        + ", " + " Gender: " + gender
-                );
-                User user = userRepository.getUser(email, password);
-                if (user != null) {
-                    request.getSession().setAttribute("sesUser", user);
-                    response.sendRedirect(request.getContextPath());
+
+                if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
+                    logger.info("Create an account with these information \n First name: " + firstName
+                            + ", " + " Last name: " + lastName
+                            + ", " + " Email: " + email
+                            + ", " + " Year of birth: " + yearOfBirth
+                            + ", " + " Gender: " + gender
+                    );
+                    User user = userRepository.getUser(email, password);
+                    if (user != null) {
+                        request.getSession().setAttribute("sesUser", user);
+                        response.sendRedirect(request.getContextPath());
+                    }
                 }
-            }
         }
     }
 

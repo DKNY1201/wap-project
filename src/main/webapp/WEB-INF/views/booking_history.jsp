@@ -16,8 +16,54 @@
 <div id="ride-detail" class="container wrapper">
     <div class="row">
         <div class="col">
-            <h3>Your booking is successful. Click to return to <a href="/">Home page</a> or click here to see your
-                <a href="booking_history">Booking history</a></h3>
+            <h2>Your booking history</h2>
+            <c:forEach items="${rideBookings}" var="rideBooking">
+                <div class="booking-item row">
+                    <div class="col-sm-3">
+                        <p class="date">
+                                ${rideBooking.booking.bookingDateTime}
+                        </p>
+                        <p class="num-of-seat">
+                                ${rideBooking.booking.numOfSeat}
+                        </p>
+                        <p class="price">
+                                ${rideBooking.ride.price}
+                        </p>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="pickup-point">
+                            <span>Pick-up point: </span>${rideBooking.ride.pickupPoint}
+                        </div>
+                        <div class="dropoff-point">
+                            <span>Drop-off point: </span>${rideBooking.ride.dropoffPoint}
+                        </div>
+
+                        <div class="driver">
+                            <h2>Driver information</h2>
+                            <h3 class="driver-name">
+                                    <span>Name: </span>${rideBooking.ride.user.firstName} ${rideBooking.ride.user.lastName}
+                            </h3>
+                            <p class="driver-email">
+                                <span>Email: </span>${rideBooking.ride.user.email}
+                            </p>
+                            <p class="driver-year-of-birth">
+                                <span>Year of birth: </span>${rideBooking.ride.user.yearOfBirth}
+                            </p>
+                            <p class="driver-gender">
+                                <span>Gender: </span>
+                                <c:choose>
+                                    <c:when test = "${rideBooking.ride.user.gender == 0}">
+                                        Female
+                                    </c:when>
+                                    <c:otherwise>
+                                        Male
+                                    </c:otherwise>
+                                </c:choose>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 

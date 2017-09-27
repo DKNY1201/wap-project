@@ -12,10 +12,9 @@ import java.util.List;
 
 import edu.mum.models.Booking;
 import edu.mum.models.Ride;
-import edu.mum.models.RideBooking;
+import edu.mum.models.RideBookingSeat;
 import edu.mum.repositories.BookingRepository;
 import edu.mum.repositories.RideRepository;
-import edu.mum.repositories.UserRepository;
 import edu.mum.utils.Constants;
 import org.apache.log4j.Logger;
 
@@ -34,7 +33,7 @@ public class SearchRideServlet extends HttpServlet {
 
         RideRepository rideRepository = new RideRepository();
         List<Ride> rides = rideRepository.getRides(pickupPoint, dropoffPoint);
-        List<RideBooking> rideBookings = new ArrayList<>();
+        List<RideBookingSeat> rideBookingSeats = new ArrayList<>();
         for (Ride ride: rides) {
             String rideID = "" +ride.getId();
             BookingRepository bookingRepository = new BookingRepository();
@@ -48,13 +47,13 @@ public class SearchRideServlet extends HttpServlet {
 
             int numOfAvailableSeat = ride.getNumOfSeat() - numOfBookedSeat;
 
-            RideBooking rideBooking = new RideBooking(ride, numOfAvailableSeat);
+            RideBookingSeat rideBookingSeat = new RideBookingSeat(ride, numOfAvailableSeat);
             if (numOfAvailableSeat > 0) {
-                rideBookings.add(rideBooking);
+                rideBookingSeats.add(rideBookingSeat);
             }
         }
 
-        request.setAttribute("rideBookings", rideBookings);
+        request.setAttribute("rideBookingSeats", rideBookingSeats);
         request.getRequestDispatcher(Constants.URL_JSP_SEARCH).forward(request, response);
     }
 

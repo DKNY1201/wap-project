@@ -28,7 +28,8 @@
 						<c:out value="${sesUser.firstName} ${sesUser.lastName}" />
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="/">Dashboard</a>
+						<a class="dropdown-item" href="booking_history">Booking history</a>
+						<a class="dropdown-item" href="ride_offer_history">Ride offer history</a>
 						<a class="dropdown-item" href="logout">Logout</a>
 					</div>
 				</li>

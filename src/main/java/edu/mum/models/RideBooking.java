@@ -6,18 +6,18 @@ package edu.mum.models;
 public class RideBooking {
     private Ride ride;
 
-    private int numOfBookedSeat;
+    private Booking booking;
 
-    public RideBooking(Ride ride, int numOfBookedSeat) {
+    public RideBooking(Ride ride, Booking booking) {
         this.ride = ride;
-        this.numOfBookedSeat = numOfBookedSeat;
+        this.booking = booking;
     }
 
     public Ride getRide() {
         return ride;
     }
 
-    public int getNumOfBookedSeat() {
-        return numOfBookedSeat;
+    public Booking getBooking() {
+        return booking;
     }
 }

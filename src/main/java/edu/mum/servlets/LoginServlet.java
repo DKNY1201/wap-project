@@ -44,7 +44,13 @@ public class LoginServlet extends HttpServlet {
             User user = userRepository.getUser(email, password);
             if (user != null) {
                 request.getSession().setAttribute("sesUser", user);
-                response.sendRedirect(request.getContextPath());
+                String backURL = request.getParameter("backURL");
+                if (backURL == null || backURL.isEmpty()) {
+                    response.sendRedirect(request.getContextPath());
+                } else {
+                    response.sendRedirect(backURL);
+                }
+
                 return;
             }
 

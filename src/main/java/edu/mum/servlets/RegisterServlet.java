@@ -24,6 +24,8 @@ public class RegisterServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(RegisterServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
         String gender = request.getParameter("gender");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
@@ -33,38 +35,50 @@ public class RegisterServlet extends HttpServlet {
         String yearOfBirth = request.getParameter("yearOfBirth");
         String errorMsg = "";
         if (gender == null) {
-            errorMsg = Constants.EMPTY_GENDER;
+            errorMsg += "error";
+            request.setAttribute("errGender",Constants.EMPTY_GENDER );
+
         }
         if (firstName == null || firstName.equals("")) {
-            errorMsg += "<br/>" + Constants.EMPTY_FIRSTNAME;
+            errorMsg += "error";
+            request.setAttribute("errFirstname",Constants.EMPTY_FIRSTNAME );
         }
         if (lastName == null || lastName.equals("")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_LASTNAME;
+            errorMsg += "error";
+            request.setAttribute("errLastname",Constants.EMPTY_LASTNAME);
         }
         if (email == null || email.equals("")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_EMAIL;
+            errorMsg += "error";
+            request.setAttribute("errEmail",Constants.EMPTY_EMAIL);
         }
         if (!ValidationUtils.verifyEmail(email)) {
-            errorMsg += "<br/>" +  Constants.ERROR_EMAIL_PATTERN;
+            errorMsg += "error";
+            request.setAttribute("errEmailVerify",Constants.ERROR_EMAIL_PATTERN);
         }
         if (password == null || password.equals("")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_PASSWORD;
+            errorMsg += "error";
+            request.setAttribute("errPassword",Constants.EMPTY_PASSWORD);
         }
         if (!ValidationUtils.verifyPassword(password)) {
-            errorMsg += "<br/>" +  Constants.ERROR_PASSWORD_PATTERN;
+            errorMsg += "error";
+            request.setAttribute("errPasswordPattern",Constants.ERROR_PASSWORD_PATTERN);
+
         }
         if (passwordConfirm == null || passwordConfirm.equals("")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_PASSWORD_COMFIRM;
+            errorMsg += "error";
+            request.setAttribute("errConfirmPassword",Constants.EMPTY_PASSWORD);
         }
         if (!passwordConfirm.equals(password)) {
-            errorMsg += "<br/>" +  Constants.NOT_SAME_CONFIRM_PASSWORD;
+            request.setAttribute("errPasswordNotEqual",Constants.NOT_SAME_CONFIRM_PASSWORD);
         }
         if (yearOfBirth == null || yearOfBirth.equals("0")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_YEAR_OF_BIRTH;
+            errorMsg += "error";
+            request.setAttribute("errYearOfBirth",Constants.EMPTY_PASSWORD);
         }
 
-        if (!errorMsg.equals("")) {
-            request.setAttribute("errorMsg", errorMsg);
+
+        if (!errorMsg.equals("")){
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
             rd.forward(request, response);
         } else {

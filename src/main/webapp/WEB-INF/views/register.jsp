@@ -14,7 +14,7 @@
 <body>
 <tags:header></tags:header>
 <div id="register" class="container wrapper">
-    
+
     <form id="register-form" action="register" method="POST">
         <h2 class="title">Sign up</h2>
 

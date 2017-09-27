@@ -85,18 +85,30 @@ public class RegisterServlet extends HttpServlet {
         } else {
             UserRepository userRepository = new UserRepository();
 
-            if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
-                logger.info("Create an account with these information \n First name: " + firstName
-                        + ", " + " Last name: " + lastName
-                        + ", " + " Email: " + email
-                        + ", " + " Year of birth: " + yearOfBirth
-                        + ", " + " Gender: " + gender
-                );
-                User user = userRepository.getUser(email, password);
-                if (user != null) {
-                    request.getSession().setAttribute("sesUser", user);
-                    response.sendRedirect(request.getContextPath());
+            if(userRepository.getUserByEmail(email)==null) {
+
+                if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
+                    logger.info("Create an account with these information \n First name: " + firstName
+                            + ", " + " Last name: " + lastName
+                            + ", " + " Email: " + email
+                            + ", " + " Year of birth: " + yearOfBirth
+                            + ", " + " Gender: " + gender
+                    );
+                    User user = userRepository.getUser(email, password);
+                    if (user != null) {
+                        request.getSession().setAttribute("sesUser", user);
+                        response.sendRedirect(request.getContextPath());
+                    }
                 }
+            }
+
+            else{
+
+                request.setAttribute("errMsg", "Duplicate emails");
+                request.setAttribute("errEmail", Constants.ERROR_EMAIL_EXISTS);
+
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
+                rd.forward(request, response);
             }
         }
     }

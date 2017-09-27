@@ -80,12 +80,13 @@
                     <p class="available-seat">${ride.numOfSeat} available seats</p>
                 </div>
                 <div class="booking">
-                    <form action="bookride" method="post">
-                        <select name="bookingSeat" id="booking-seat">
+                    <form action="booking" method="post">
+                        <select name="numOfSeat" id="booking-seat">
                             <c:forEach begin="1" end="${ride.numOfSeat}" var="i">
                                 <option value="${i}">${i} seat<c:if test="${i > 1}">s</c:if></option>
                             </c:forEach>
                         </select>
+                        <input type="hidden" value="${ride.id}" name="rideID">
                         <button type="submit" class="btn btn-danger">Book</button>
                     </form>
 

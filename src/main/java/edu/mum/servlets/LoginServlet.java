@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("currentPage", "login");
         request.getRequestDispatcher(Constants.URL_JSP_LOG_IN).forward(request, response);
     }
 }

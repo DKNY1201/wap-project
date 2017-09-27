@@ -25,7 +25,6 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         String gender = request.getParameter("gender");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
@@ -90,8 +89,6 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
             rd.forward(request, response);
         } else {
-
-
                 if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
                     logger.info("Create an account with these information \n First name: " + firstName
                             + ", " + " Last name: " + lastName
@@ -109,6 +106,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("currentPage", "signup");
         request.getRequestDispatcher(Constants.URL_JSP_SIGN_UP).forward(request, response);
     }
 }

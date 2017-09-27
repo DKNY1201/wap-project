@@ -34,12 +34,7 @@
                        aria-describedby="basic-addon-dp" required value="${param.dropoffPoint}">
             </div>
         </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" name="isRoundTrip" type="checkbox" <c:if test="${param.isRoundTrip}">checked</c:if>>
-                Round trip
-            </label>
-        </div>
+
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-startdatetime"><i class="fa fa-envelope-o"
@@ -48,14 +43,7 @@
                        aria-describedby="basic-addon-startdatetime" value="${param.startDatetime}">
             </div>
         </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon-returndatetime"><i class="fa fa-envelope-o"
-                                                                                  aria-hidden="true"></i></span>
-                <input type="datetime-local" name="returnDatetime" class="form-control" aria-label="returndatetime"
-                       aria-describedby="basic-addon-returndatetime" value="${param.returnDatetime}">
-            </div>
-        </div>
+
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon-price"><i class="fa fa-play-circle" aria-hidden="true"></i></span>
@@ -73,10 +61,6 @@
         <div class="form-group">
             <label for="start-ride-detail">Start Ride details</label>
             <textarea class="form-control" id="start-ride-detail" rows="3" name="startRideDetail">${param.startRideDetail}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="return-ride-detail">Return Ride details</label>
-            <textarea class="form-control" id="return-ride-detail" rows="3" name="returnRideDetail">${param.returnRideDetail}</textarea>
         </div>
 
         <div class="form-group">

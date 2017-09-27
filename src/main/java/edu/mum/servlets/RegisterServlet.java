@@ -77,15 +77,20 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("errYearOfBirth",Constants.EMPTY_PASSWORD);
         }
 
+        UserRepository userRepository = new UserRepository();
+
+        if(userRepository.getUserByEmail(email)!=null) {
+            isError = true;
+            request.setAttribute("errEmail", Constants.ERROR_EMAIL_EXISTS);
+        }
+
 
         if (isError){
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
             rd.forward(request, response);
         } else {
-            UserRepository userRepository = new UserRepository();
 
-            if(userRepository.getUserByEmail(email)==null) {
 
                 if (userRepository.createUser(firstName, lastName, email, password, yearOfBirth, gender)) {
                     logger.info("Create an account with these information \n First name: " + firstName
@@ -100,16 +105,6 @@ public class RegisterServlet extends HttpServlet {
                         response.sendRedirect(request.getContextPath());
                     }
                 }
-            }
-
-            else{
-
-                request.setAttribute("errMsg", "Duplicate emails");
-                request.setAttribute("errEmail", Constants.ERROR_EMAIL_EXISTS);
-
-                RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
-                rd.forward(request, response);
-            }
         }
     }
 

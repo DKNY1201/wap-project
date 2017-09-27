@@ -8,43 +8,43 @@
     <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
     <title>Home Page</title>
     <tags:basecss></tags:basecss>
-    
+
     <link href="<c:url value='/resources/css/homepage.css' />" rel="stylesheet" />
 </head>
 <body>
 <tags:header></tags:header>
 
-<div class="container-fluid">
+<div class="container-fluid wrapper">
     <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
             <img alt="blabla" src="<c:url value='/resources/images/blablacar.jpg'/>">
         </div>
     </div>
 
-    <form id="homeForm" action="" method="">
+    <form action="search" method="post" id="homePageSearch-form">
+
         <div class="form-group">
             <h1>Love getting there</h1>
             <p>Carpool in good company</p>
         </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <input class="form-control" id="fromCityName" name = "fromCityName" type="text" placeholder="Leaving from...">
-            </div>
-            <div class="col-md-3">
-                <input class="form-control" id="toCityName" name = "toCityName" type="text" placeholder="Going to...">
+         <div class="row">
+                <div class="input-group col-md-4">
+                    <span class="input-group-addon" id="basic-addon-pp"><i class="fa fa-font" aria-hidden="true"></i></span>
+                    <input type="text" name="pickupPoint" class="form-control" placeholder="Pick up point" aria-label="pickupPoint"
+                           aria-describedby="basic-addon-pp" required value="">
+                </div>
+                <div class="input-group col-md-4">
+                    <span class="input-group-addon" id="basic-addon-dp"><i class="fa fa-font" aria-hidden="true"></i></span>
+                    <input type="text" name="dropoffPoint" class="form-control" placeholder="Drop off point" aria-label="dropoffPoint"
+                           aria-describedby="basic-addon-dp" required value="">
+                </div>
+                <div class="input-group col-md-4">
+                    <input type="submit" class="btn btn-primary" value="Find a ride">
+                </div>
             </div>
 
-            <div class="col-md-3">
-                <input class="form-control" id="startDate" name = "startDate" type="text" placeholder="Date (MM/DD/YYYY)" pattern = "(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](201)[789]" title = "Please enter the date as specified">
-            </div>
-
-            <div class="col-md-3">
-                <input type="submit" class="btn btn-primary" value="Find a ride">
-            </div>
-        </div>
     </form>
-
 </div>
 
 <tags:basejs></tags:basejs>

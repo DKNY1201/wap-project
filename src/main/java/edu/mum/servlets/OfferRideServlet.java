@@ -25,13 +25,10 @@ public class OfferRideServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pickupPoint = request.getParameter("pickupPoint");
         String dropoffPoint = request.getParameter("dropoffPoint");
-        String isRoundTrip = request.getParameter("isRoundTrip");
         String startDatetime = request.getParameter("startDatetime");
-        String returnDatetime = request.getParameter("returnDatetime");
         String price = request.getParameter("price");
         String numOfSeat = request.getParameter("numOfSeat");
         String startRideDetail = request.getParameter("startRideDetail");
-        String returnRideDetail = request.getParameter("returnRideDetail");
         String maxLuggage = request.getParameter("maxLuggage");
         String pickupFlexibility = request.getParameter("pickupFlexibility");
 
@@ -43,26 +40,13 @@ public class OfferRideServlet extends HttpServlet {
         if (dropoffPoint == null || dropoffPoint.equals("")) {
             errorMsg += "<br/>" + Constants.EMPTY_DROPOFF;
         }
-        if (isRoundTrip != null && isRoundTrip.equals("on")) {
-            isRoundTrip = "1";
-        } else {
-            isRoundTrip = "0";
-        }
 
         if (startDatetime == null || startDatetime.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_START_DATETIME;
         }
-        if (returnDatetime == null || returnDatetime.equals("")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_RETURN_DATETIME;
-        }
 
         LocalDateTime startLocalDateTime = LocalDateTime.parse(startDatetime);
-        LocalDateTime returnLocalDateTime = LocalDateTime.parse(returnDatetime);
         logger.info("startLocalDateTime:" + startLocalDateTime);
-        logger.info("returnLocalDateTime:" + returnLocalDateTime);
-        if (startLocalDateTime.isAfter(returnLocalDateTime)) {
-            errorMsg += "<br/>" +  Constants.START_DATETIME_AFTER_RETURN_DATETIME;
-        }
 
         if (price == null || price.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_PRICE;
@@ -73,9 +57,7 @@ public class OfferRideServlet extends HttpServlet {
         if (startRideDetail == null || startRideDetail.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_START_RIDE_DETAIL;
         }
-        if (returnRideDetail == null || returnRideDetail.equals("")) {
-            errorMsg += "<br/>" +  Constants.EMPTY_RETURN_RIDE_DETAIL;
-        }
+
         if (maxLuggage == null || maxLuggage.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_MAX_LUGGAGE;
         }
@@ -93,23 +75,24 @@ public class OfferRideServlet extends HttpServlet {
             User user = (User) request.getSession().getAttribute("sesUser");
             String email = user.getEmail();
 
-            if (rideRepository.createRide(pickupPoint, dropoffPoint, isRoundTrip, startDatetime, returnDatetime, price,
-                    numOfSeat, startRideDetail, returnRideDetail, maxLuggage, pickupFlexibility, email)) {
+            if (rideRepository.createRide(pickupPoint, dropoffPoint,"0", startDatetime, null, price,
+                    numOfSeat, startRideDetail, "null", maxLuggage, pickupFlexibility, email)) {
                 logger.info("Create a ride with these information \n Pickup point: " + pickupPoint
                         + ", " + " dropoffPoint: " + dropoffPoint
-                        + ", " + " isRoundTrip: " + isRoundTrip
+                        + ", " + " isRoundTrip: " + "null"
                         + ", " + " startDatetime: " + startDatetime
-                        + ", " + " returnDatetime: " + returnDatetime
+                        + ", " + " returnDatetime: " + "null"
                         + ", " + " price: " + price
                         + ", " + " numOfSeat: " + numOfSeat
                         + ", " + " startRideDetail: " + startRideDetail
-                        + ", " + " returnRideDetail: " + returnRideDetail
+                        + ", " + " returnRideDetail: " + "null"
                         + ", " + " maxLuggage: " + maxLuggage
                         + ", " + " pickupFlexibility: " + pickupFlexibility
                         + ", " + " email: " + email
                 );
                 response.sendRedirect(request.getContextPath());
             }
+
         }
     }
 

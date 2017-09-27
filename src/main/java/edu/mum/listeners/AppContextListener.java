@@ -34,7 +34,8 @@ public class AppContextListener implements ServletContextListener {
         String user = ctx.getInitParameter("DBUSER");
         String pwd = ctx.getInitParameter("DBPWD");
 
-        BaseRepository.SetConnection(dbURL, user, pwd);
+        Connection connection = BaseRepository.SetConnection(dbURL, user, pwd);
+        ctx.setAttribute("DBConnection", connection);
 
         //initialize log4j
         String log4jConfig = ctx.getInitParameter("log4j-config");

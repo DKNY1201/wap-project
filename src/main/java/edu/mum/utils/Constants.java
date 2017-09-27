@@ -16,8 +16,11 @@ public class Constants {
     public static final String URL_JSP_LOG_OUT = "/WEB-INF/views/logout.jsp";
     public static final String URL_JSP_OFFER_RIDE = "/WEB-INF/views/offerride.jsp";
     public static final String URL_JSP_SEARCH = "/WEB-INF/views/search.jsp";
+    public static final String URL_JSP_RIDEDETAIL = "/WEB-INF/views/ridedetail.jsp";
+    public static final String URL_JSP_BOOKING_HISTORY = "/WEB-INF/views/booking_history.jsp";
+    public static final String URL_BOOKING_HISTORY = "/booking_history";
+    public static final String URL_JSP_BOOKING_SUCCESS = "/WEB-INF/views/booking_success.jsp";
     public static final String HOMEPAGE = "index.jsp";
-
 
     // Error messages
     public static final String WRONG_EMAIL_PASSWORD = "Username or password is invalid";
@@ -31,6 +34,7 @@ public class Constants {
     public static final String EMPTY_PASSWORD_COMFIRM = "Password confirm can't be null or empty.";
     public static final String NOT_SAME_CONFIRM_PASSWORD = "Password and password confirm must be the same.";
     public static final String EMPTY_YEAR_OF_BIRTH = "Please select Year of birth";
+    public static final String ERROR_EMAIL_EXISTS = "This is email already exists. Please enter another valid email.";
 
     public static final String EMPTY_PICKUP = "Pick up point can't be null or empty.";
     public static final String EMPTY_DROPOFF = "Drop off point can't be null or empty.";

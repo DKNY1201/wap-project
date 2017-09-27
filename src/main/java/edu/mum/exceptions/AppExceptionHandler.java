@@ -1,5 +1,7 @@
 package edu.mum.exceptions;
 
+import edu.mum.utils.Constants;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +60,7 @@ public class AppExceptionHandler extends HttpServlet {
         }
 
         out.write("<br><br>");
-        out.write("<a href=\"login.html\">Home Page</a>");
+        out.write("<a href=\"" + request.getContextPath() + "/" + Constants.HOMEPAGE + "\">Home Page</a>");
         out.write("</body></html>");
     }
 }

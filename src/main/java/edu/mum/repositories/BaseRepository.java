@@ -32,15 +32,18 @@ public class BaseRepository<T> {
 		return connectionManager;
 	}
 
-	public static void SetConnection(String dbUrl, String dbUser, String dbPassword) {
+	public static Connection SetConnection(String dbUrl, String dbUser, String dbPassword) {
+		Connection connection = null;
 		try {
 			databaseUrl = dbUrl;
 			databaseUser = dbUser;
 			databasePassword = dbPassword;
 			connectionManager = new DBConnectionManager(databaseUrl, databaseUser, databasePassword);
+			connection = connectionManager.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return connection;
 	}
 
 	protected boolean save(String sql, String... parameters) {
@@ -57,7 +60,7 @@ public class BaseRepository<T> {
 					}
 				}
 			}
-			// https://stackoverflow.com/questions/23088708/prepared-statement-returns-false-but-row-is-inserted
+
 			isSuccess = statement.executeUpdate() > 0;
 			statement.close();
 		} catch (SQLException e) {

@@ -14,6 +14,8 @@ public class UserRepository extends BaseRepository<User> {
 			"SELECT * FROM Users WHERE email=? AND password=? LIMIT 1";
 	private static final String GET_USER_BY_EMAIL =
 			"SELECT * FROM Users WHERE email=? LIMIT 1";
+	private static final String GET_USER_BY_ID =
+			"SELECT * FROM Users WHERE id=? LIMIT 1";
 	private static final String CREATE_USER = 
 			"insert into Users(firstName, lastName, email, password, yearOfBirth, gender) values (?,?,?,?,?,?)";
 	private static final String UPDATE_USER = 
@@ -58,6 +60,16 @@ public class UserRepository extends BaseRepository<User> {
 			logger.info("User found with details=" + user);
 		}
 		
+		return user;
+	}
+
+	public User getUserById(String id) {
+		User user = super.get(GET_USER_BY_ID, getUser, id);
+
+		if (user != null) {
+			logger.info("User found with details=" + user);
+		}
+
 		return user;
 	}
 	

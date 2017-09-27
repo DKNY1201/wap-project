@@ -14,18 +14,16 @@ import java.util.function.Function;
 import edu.mum.models.*;
 
 public class RideRepository extends BaseRepository<Ride> {
-	private static final String GET_USER_BY_EMAIL_PASSWORD = 
-			"SELECT * FROM Users WHERE email=? AND password=? LIMIT 1";
 	private static final String GET_ALL_RIDES =
 			"SELECT * FROM Ride";
 	private static final String CREATE_RIDE =
 			"insert into Ride(pickupPoint, dropoffPoint, isRoundTrip, startDatetime, returnDatetime, price," +
 					"numOfSeat, startRideDetail, returnRideDetail, maxLuggage, pickupFlexibility, emailUser) " +
 					"values (?,?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String GET_RIDE_BY_PICKUP_DROP_POINTS = "SELECT * FROM Ride WHERE pickupPoint LIKE " +
-			"? AND dropoffPoint LIKE ? ORDER BY price";
-	private static final String UPDATE_USER = 
-			"UPDATE User SET email = ?, firstName = ?, lastName = ?, gender = ?, birthday = ? WHERE id = ?";
+	private static final String GET_RIDE_BY_PICKUP_DROP_POINTS =
+			"SELECT * FROM Ride WHERE pickupPoint LIKE ? AND dropoffPoint LIKE ? ORDER BY price";
+	private static final String GET_RIDE_BY_ID =
+			"SELECT * FROM Ride WHERE id = ? LIMIT 1";
 
 	static Logger logger = Logger.getLogger(RideRepository.class);
 	
@@ -74,5 +72,15 @@ public class RideRepository extends BaseRepository<Ride> {
 		} else {
 			return super.getList(GET_RIDE_BY_PICKUP_DROP_POINTS, getRide, "%" + pickupPoint + "%", "%" + dropoffPoint + "%");
 		}
+	}
+
+	public Ride getRideById(String id) {
+		Ride ride = super.get(GET_RIDE_BY_ID, getRide, id);
+
+		if (ride != null) {
+			logger.info("User found with details=" + ride);
+		}
+
+		return ride;
 	}
 }

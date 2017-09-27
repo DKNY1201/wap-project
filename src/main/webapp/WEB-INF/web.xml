@@ -13,7 +13,7 @@
     </context-param>
     <context-param>
         <param-name>DBPWD</param-name>
-        <param-value></param-value>
+        <param-value>@KEEPSMILING123</param-value>
     </context-param>
     <context-param>
         <param-name>DBURL</param-name>

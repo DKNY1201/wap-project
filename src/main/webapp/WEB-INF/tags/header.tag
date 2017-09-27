@@ -8,17 +8,17 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item active">
+			<li class="nav-item <c:if test="${currentPage == 'search'}">active</c:if>">
 				<a class="nav-link" href="search">Find a ride <span class="sr-only">(current)</span></a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item <c:if test="${currentPage == 'offerride'}">active</c:if>">
 				<a class="nav-link" href="offerride">Offer a ride</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item <c:if test="${currentPage == 'signup'}">active</c:if>">
 				<a class="nav-link" href="register">Sign up</a>
 			</li>
 			<c:if test="${empty sesUser}">
-				<li class="nav-item">
+				<li class="nav-item <c:if test="${currentPage == 'login'}">active</c:if>">
 					<a class="nav-link" href="login">Log in</a>
 				</li>
 			</c:if>

@@ -97,6 +97,7 @@ public class OfferRideServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("currentPage", "offerride");
         request.getRequestDispatcher(Constants.URL_JSP_OFFER_RIDE).forward(request, response);
     }
 }

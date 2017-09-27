@@ -54,6 +54,7 @@ public class SearchRideServlet extends HttpServlet {
         }
 
         request.setAttribute("rideBookingSeats", rideBookingSeats);
+        request.setAttribute("currentPage", "search");
         request.getRequestDispatcher(Constants.URL_JSP_SEARCH).forward(request, response);
     }
 

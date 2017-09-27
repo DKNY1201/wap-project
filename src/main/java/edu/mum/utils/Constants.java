@@ -7,7 +7,7 @@ public class Constants {
 
     public static final String SITE_NAME = "Chalo Chalo in car";
 
-    public static final String[] SECURE_PATHS = {"/dashboard", "/logout", "/offerride", "/booking_history"};
+    public static final String[] SECURE_PATHS = {"/dashboard", "/logout", "/offerride", "/booking_history", "/ride_offer_history"};
 
     // URL
     public static final String URL_LOGIN = "/login";
@@ -18,6 +18,8 @@ public class Constants {
     public static final String URL_JSP_SEARCH = "/WEB-INF/views/search.jsp";
     public static final String URL_JSP_RIDEDETAIL = "/WEB-INF/views/ridedetail.jsp";
     public static final String URL_JSP_BOOKING_HISTORY = "/WEB-INF/views/booking_history.jsp";
+    public static final String URL_JSP_RIDE_OFFER_HISTORY = "/WEB-INF/views/ride_offer_history.jsp";
+
     public static final String URL_BOOKING_HISTORY = "/booking_history";
     public static final String URL_JSP_BOOKING_SUCCESS = "/WEB-INF/views/booking_success.jsp";
     public static final String HOMEPAGE = "index.jsp";

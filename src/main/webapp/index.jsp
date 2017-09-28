@@ -17,7 +17,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
-            <img alt="blabla" src="<c:url value='/resources/images/blablacar.jpg'/>">
+            <img class="img-fluid" alt="blabla" src="<c:url value='/resources/images/homepage-banner.jpg'/>">
         </div>
     </div>
 

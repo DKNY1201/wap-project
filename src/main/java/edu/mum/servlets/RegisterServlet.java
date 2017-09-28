@@ -24,7 +24,6 @@ public class RegisterServlet extends HttpServlet {
     static Logger logger = Logger.getLogger(RegisterServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String gender = request.getParameter("gender");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
@@ -32,11 +31,11 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirm = request.getParameter("confirm-password");
         String yearOfBirth = request.getParameter("yearOfBirth");
+
         boolean isError = false;
         if (gender == null) {
             isError = true;
             request.setAttribute("errGender",Constants.EMPTY_GENDER );
-
         }
         if (firstName == null || firstName.equals("")) {
             isError = true;
@@ -46,14 +45,17 @@ public class RegisterServlet extends HttpServlet {
             isError = true;
             request.setAttribute("errLastname",Constants.EMPTY_LASTNAME);
         }
+        logger.info("email123: " + email);
         if (email == null || email.equals("")) {
             isError = true;
             request.setAttribute("errEmail",Constants.EMPTY_EMAIL);
+        } else {
+            if (!ValidationUtils.verifyEmail(email)) {
+                isError = true;
+                request.setAttribute("errEmailVerify",Constants.ERROR_EMAIL_PATTERN);
+            }
         }
-        if (!ValidationUtils.verifyEmail(email)) {
-            isError = true;
-            request.setAttribute("errEmailVerify",Constants.ERROR_EMAIL_PATTERN);
-        }
+
         if (password == null || password.equals("")) {
             isError = true;
             request.setAttribute("errPassword",Constants.EMPTY_PASSWORD);
@@ -61,7 +63,6 @@ public class RegisterServlet extends HttpServlet {
         if (!ValidationUtils.verifyPassword(password)) {
             isError = true;
             request.setAttribute("errPasswordPattern",Constants.ERROR_PASSWORD_PATTERN);
-
         }
         if (passwordConfirm == null || passwordConfirm.equals("")) {
             isError = true;
@@ -83,9 +84,7 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("errEmail", Constants.ERROR_EMAIL_EXISTS);
         }
 
-
         if (isError){
-
             RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.URL_JSP_SIGN_UP);
             rd.forward(request, response);
         } else {

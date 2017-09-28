@@ -89,7 +89,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Offer a ride</button>
+            <button class="btn btn-danger" type="submit">Offer a ride</button>
         </div>
     </form>
 </div>

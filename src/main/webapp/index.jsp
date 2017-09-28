@@ -13,7 +13,7 @@
 <body>
 <tags:header></tags:header>
 
-<div class="container-fluid wrapper">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
             <img class="img-fluid" alt="Chalo chalo incar" src="<c:url value='/resources/images/homepage-banner.jpg'/>">

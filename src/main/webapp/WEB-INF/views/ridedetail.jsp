@@ -74,7 +74,7 @@
 
             </div>
         </div>
-        <div class="col-sm-3 ml-auto ride-detail-right ride-detail-box">
+        <div class="col-sm-3 ml-auto ride-detail-box">
             <section class="first-right-box box">
                 <div class="price">
                     <span class="left">Price per seat</span>

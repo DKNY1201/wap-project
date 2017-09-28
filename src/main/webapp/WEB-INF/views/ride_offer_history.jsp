@@ -9,40 +9,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ride offer history</title>
     <tags:basecss></tags:basecss>
-    <link href="<c:url value='/resources/css/ride_offer_history.css' />" rel="stylesheet"/>
+    <link href="<c:url value='/resources/css/history.css' />" rel="stylesheet"/>
 </head>
 <body>
 <tags:header></tags:header>
-<div id="ride-detail" class="container wrapper">
+<div id="history" class="container wrapper">
     <div class="row">
         <div class="col">
-            <h2>Your Ride offer history</h2>
+            <h2 class="title">Your ride offer history</h2>
             <c:forEach items="${rideBookingSeats}" var="rideBookingSeat">
-                <div class="booking-item row">
-                    <div class="col-sm-3">
+                <div class="history-item row">
+                    <div class="col-sm-3 left-box">
                         <p class="date">
-                            <span>Start date:</span> ${rideBookingSeat.ride.startDatetime}
+                            <i class="fa fa-calendar" aria-hidden="true"></i> Start date: ${rideBookingSeat.ride.startDatetime}
                         </p>
                         <p class="num-of-seat">
-                            <span>Number of seats:</span> ${rideBookingSeat.ride.numOfSeat}
+                            <i class="fa fa-users" aria-hidden="true"></i> Seats: ${rideBookingSeat.ride.numOfSeat}
                         </p>
                         <p class="price">
-                            <span>Price:</span> ${rideBookingSeat.ride.price}
+                            <i class="fa fa-usd" aria-hidden="true"></i> Price: ${rideBookingSeat.ride.price}
                         </p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 right-box">
                         <div class="pickup-point">
-                            <span>Pick-up point: </span>${rideBookingSeat.ride.pickupPoint}
+                            <span><i class="fa fa-play-circle" aria-hidden="true"></i> Pick-up point: </span>${rideBookingSeat.ride.pickupPoint}
                         </div>
                         <div class="dropoff-point">
-                            <span>Drop-off point: </span>${rideBookingSeat.ride.dropoffPoint}
+                            <span><i class="fa fa-stop-circle-o" aria-hidden="true"></i> Drop-off point: </span>${rideBookingSeat.ride.dropoffPoint}
                         </div>
                         <div class="start-ride-detail">
-                            <span>Start ride detail: </span>${rideBookingSeat.ride.startRideDetail}
+                            <span>Start ride detail: </span>
+                            <p>${rideBookingSeat.ride.startRideDetail}</p>
                         </div>
                         <div class="option">
-                            <p class="max-luggage"><span>Max luggage: </span>${rideBookingSeat.ride.maxLuggage}</p>
-                            <p class="pickup-flexibility"><span>Pick-up flexibility: </span>${rideBookingSeat.ride.pickupFlexibility.name}</p>
+                            <h2>Option:</h2>
+                            <p class="max-luggage">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                <span>Max luggage: </span>${rideBookingSeat.ride.maxLuggage}
+                            </p>
+                            <p class="pickup-flexibility">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>Pick-up flexibility: </span>${rideBookingSeat.ride.pickupFlexibility.name}
+                            </p>
                         </div>
                     </div>
                 </div>

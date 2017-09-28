@@ -44,8 +44,8 @@
 .ride-detail-right .first-right-box .price {
     border-bottom: 1px solid #ccc;
     padding: 0 10px 10px;
-    line-height: 45px;
-    height: 45px;
+    line-height: 50px;
+    height: 50px;
 }
 
 .ride-detail-right .first-right-box .price .left{
@@ -54,6 +54,7 @@
 
 .ride-detail-right .first-right-box .price .right{
     float: right;
+    font-size: 35px;
 }
 
 .ride-detail-right .first-right-box .passengers {

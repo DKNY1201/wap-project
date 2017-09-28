@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon-dp"><i class="fa fa-play-circle" aria-hidden="true"></i></span>
+                <span class="input-group-addon" id="basic-addon-dp"><i class="fa fa-stop-circle-o" aria-hidden="true"></i></span>
                 <input type="text" name="dropoffPoint" class="form-control" placeholder="Example: Davenport, Chicago, Mount Pleasant" aria-label="dropoffPoint"
                        aria-describedby="basic-addon-dp" required value="${param.dropoffPoint}">
             </div>
@@ -37,23 +37,28 @@
 
         <div class="form-group">
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon-startdatetime"><i class="fa fa-envelope-o"
-                                                                          aria-hidden="true"></i></span>
-                <input type="datetime-local" name="startDatetime" class="form-control" aria-label="startdatetime"
-                       aria-describedby="basic-addon-startdatetime" value="${param.startDatetime}">
+                <span class="input-group-addon" id="basic-addon-startdatetime">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+                <input id="datetimepicker" type="text" name="startDatetime" class="form-control" aria-label="startdatetime"
+                       aria-describedby="basic-addon-startdatetime" value="${param.startDatetime}" placeholder="Pick-up date">
             </div>
         </div>
 
         <div class="form-group">
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon-price"><i class="fa fa-play-circle" aria-hidden="true"></i></span>
+                <span class="input-group-addon" id="basic-addon-price">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                </span>
                 <input type="text" name="price" class="form-control" placeholder="Enter price of the ride" aria-label="price"
                        aria-describedby="basic-addon-price" required pattern="\d{1,4}" value="${param.price}">
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon-nos"><i class="fa fa-play-circle" aria-hidden="true"></i></span>
+                <span class="input-group-addon" id="basic-addon-nos">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                </span>
                 <input type="text" name="numOfSeat" class="form-control" placeholder="Available seats" aria-label="price"
                        aria-describedby="basic-addon-nos" required pattern="\d{1,7}" value="${param.numOfSeat}">
             </div>
@@ -90,5 +95,6 @@
 </div>
 <tags:footer></tags:footer>
 <tags:basejs></tags:basejs>
+<script src="<c:url value='/resources/js/offerride.js' />"></script>
 </body>
 </html>

@@ -35,7 +35,7 @@
                 <input type="text" name="firstname" class="form-control" placeholder="First name" aria-label="firstname"
                        aria-describedby="basic-addon-fn" required value="${param.firstname}">
             </div>
-            <small name="errFirstname" class="form-text text-muted" >${errFirstname}</small>
+            <small name="errFirstname" class="form-text text-muted">${errFirstname}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -51,7 +51,8 @@
                 <span class="input-group-addon" id="basic-addon-email"><i class="fa fa-envelope-o"
                                                                           aria-hidden="true"></i></span>
                 <input type="email" name="email" class="form-control" placeholder="Email" aria-label="email"
-                       aria-describedby="basic-addon-email" pattern="[a-zA-Z0-9_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}"  value="${param.email}">
+                       aria-describedby="basic-addon-email" pattern="[a-zA-Z0-9_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}"
+                       value="${param.email}">
             </div>
             <small name="errEmail" class="form-text text-muted">${errEmail}&nbsp;${errEmailVerify}</small>
         </div>
@@ -70,14 +71,23 @@
                 <input type="password" name="confirm-password" class="form-control" placeholder="Confirm password"
                        aria-label="confirm-password" aria-describedby="basic-addon-cpw" required pattern=".{8,}">
             </div>
-            <small name="errConfirmPassword" class="form-text text-muted">${errConfirmPassword}&nbsp;${errPasswordNotEqual}</small>
+            <small name="errConfirmPassword"
+                   class="form-text text-muted">${errConfirmPassword}&nbsp;${errPasswordNotEqual}</small>
         </div>
+
+        <%--<label class="custom-file">--%>
+            <%--<input type="file" name="avatar" class="form-control custom-file-input" placeholder="Upload your avatar"--%>
+                   <%--aria-label="avatar" aria-describedby="basic-addon-img" required>--%>
+            <%--<span class="custom-file-control"></span>--%>
+        <%--</label>--%>
+        <%--<small name="errConfirmPassword" class="form-text text-muted">${errConfirmPassword}&nbsp;${errPasswordNotEqual}</small>--%>
+
         <div class="form-group">
             <select class="form-control" id="year-of-birth" name="yearOfBirth" required>
                 <option value="0">Year of birth</option>
                 <c:forEach begin="1900" end="2010" var="i">
                     <option value="${i}" <c:if test="${param.yearOfBirth == i}">selected</c:if>>
-                        <c:out value="${i}" />
+                        <c:out value="${i}"/>
                     </option>
                 </c:forEach>
             </select>

@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
+import edu.mum.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -43,21 +46,32 @@ public class OfferRideServlet extends HttpServlet {
 
         if (startDatetime == null || startDatetime.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_START_DATETIME;
+        } else {
+            startDatetime = startDatetime.replace("/", "-");
+            startDatetime += ":00";
+            logger.info("startLocalDateTime:" + startDatetime);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime date = LocalDateTime.parse(startDatetime, formatter);
+            if (LocalDateTime.now().isAfter(date)) {
+                errorMsg += "<br/>" +  Constants.START_DATETIME_IN_PAST;
+            }
         }
-
-        LocalDateTime startLocalDateTime = LocalDateTime.parse(startDatetime);
-        logger.info("startLocalDateTime:" + startLocalDateTime);
 
         if (price == null || price.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_PRICE;
         }
+        if (!ValidationUtils.verifyNumber(price)) {
+            errorMsg += "<br/>" +  Constants.PRICE_NOT_A_NUMBER;
+        }
         if (numOfSeat == null || numOfSeat.equals("") || numOfSeat.equals("0")) {
             errorMsg += "<br/>" +  Constants.EMPTY_NUM_OF_SEAT;
+        }
+        if (!ValidationUtils.verifyNumber(numOfSeat)) {
+            errorMsg += "<br/>" +  Constants.NUM_OF_SEAT_NOT_A_NUMBER;
         }
         if (startRideDetail == null || startRideDetail.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_START_RIDE_DETAIL;
         }
-
         if (maxLuggage == null || maxLuggage.equals("")) {
             errorMsg += "<br/>" +  Constants.EMPTY_MAX_LUGGAGE;
         }
@@ -90,7 +104,8 @@ public class OfferRideServlet extends HttpServlet {
                         + ", " + " pickupFlexibility: " + pickupFlexibility
                         + ", " + " email: " + email
                 );
-                response.sendRedirect(request.getContextPath());
+
+                response.sendRedirect(request.getContextPath() + Constants.URL_RIDE_OFFER_HISTORY);
             }
 
         }

@@ -1,0 +1,24 @@
+.ride-item {
+    border-bottom: 1px dashed #cccccc;
+    margin-bottom: 20px;
+}
+
+.ride-item .info-box p {
+    margin-bottom: 5px;
+}
+
+.ride-item .info-box img {
+    width: 120px;
+    float: left;
+    margin-right: 10px;
+}
+
+.ride-item .email {
+    clear: both;
+    margin: 20px 0 0;
+    font-size: 14px;
+}
+
+.ride-item .gender {
+    font-size: 14px;
+}

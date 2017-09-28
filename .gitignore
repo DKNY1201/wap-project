@@ -20,3 +20,4 @@ src/main/webapp/WEB-INF/web.xml
 src/main/webapp/WEB-INF/web.xml
 src/main/webapp/WEB-INF/tags/footer.tag
 .settings/org.eclipse.core.resources.prefs
+/bin/

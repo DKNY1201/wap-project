@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary" type="submit">Log in</button>
+				<button class="btn btn-danger" type="submit">Log in</button>
 			</div>
 			<div class="form-group">
 				If you are a new user, please click <a href="<c:url value='/register'/>">here</a> to register.

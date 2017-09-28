@@ -54,7 +54,7 @@
                        aria-describedby="basic-addon-email" pattern="[a-zA-Z0-9_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}"
                        value="${param.email}">
             </div>
-            <small name="errEmail" class="form-text text-muted">${errEmail}&nbsp;${errEmailVerify}</small>
+            <small name="errEmail" class="form-text text-muted">${errEmail} ${errEmailVerify}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -62,7 +62,7 @@
                 <input type="password" name="password" class="form-control" placeholder="Password (min .8 characters)"
                        aria-label="password" aria-describedby="basic-addon-pw" required pattern=".{8,}">
             </div>
-            <small name="errPassword" class="form-text text-muted">${errPassword}&nbsp;${errPasswordPattern}</small>
+            <small name="errPassword" class="form-text text-muted">${errPassword} ${errPasswordPattern}</small>
         </div>
         <div class="form-group">
             <div class="input-group">
@@ -72,7 +72,7 @@
                        aria-label="confirm-password" aria-describedby="basic-addon-cpw" required pattern=".{8,}">
             </div>
             <small name="errConfirmPassword"
-                   class="form-text text-muted">${errConfirmPassword}&nbsp;${errPasswordNotEqual}</small>
+                   class="form-text text-muted">${errConfirmPassword} ${errPasswordNotEqual}</small>
         </div>
 
         <%--<label class="custom-file">--%>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Sign up</button>
+            <button class="btn btn-danger" type="submit">Sign up</button>
         </div>
 
         <div class="form-group">

@@ -3,4 +3,5 @@
 <script src="<c:url value='/resources/js/jquery-3.2.1.slim.min.js' />" type="text/javascript"></script>
 <script src="<c:url value='/resources/js/popper.min.js' />" type="text/javascript"></script>
 <script src="<c:url value='/resources/bootstrap/js/bootstrap.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/resources/js/jquery.datetimepicker.full.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/resources/js/app.js'/>" type="text/javascript"></script>

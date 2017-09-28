@@ -19,6 +19,7 @@ public class Constants {
     public static final String URL_JSP_RIDEDETAIL = "/WEB-INF/views/ridedetail.jsp";
     public static final String URL_JSP_BOOKING_HISTORY = "/WEB-INF/views/booking_history.jsp";
     public static final String URL_JSP_RIDE_OFFER_HISTORY = "/WEB-INF/views/ride_offer_history.jsp";
+    public static final String URL_RIDE_OFFER_HISTORY = "/ride_offer_history";
 
     public static final String URL_BOOKING_HISTORY = "/booking_history";
     public static final String URL_JSP_BOOKING_SUCCESS = "/WEB-INF/views/booking_success.jsp";
@@ -43,8 +44,11 @@ public class Constants {
     public static final String EMPTY_START_DATETIME = "Start time can't be null or empty.";
     public static final String EMPTY_RETURN_DATETIME = "Return time can't be null or empty.";
     public static final String START_DATETIME_AFTER_RETURN_DATETIME = "Start time can't be after return time.";
+    public static final String START_DATETIME_IN_PAST = "Start time can't be in the past.";
     public static final String EMPTY_PRICE = "Price can't be null or empty.";
+    public static final String PRICE_NOT_A_NUMBER = "Price must be a number.";
     public static final String EMPTY_NUM_OF_SEAT = "Number of seat can't be null or empty.";
+    public static final String NUM_OF_SEAT_NOT_A_NUMBER = "Number of seat must be a number.";
     public static final String EMPTY_START_RIDE_DETAIL = "Start ride detail can't be null or empty.";
     public static final String EMPTY_RETURN_RIDE_DETAIL = "Return ride detail can't be null or empty.";
     public static final String EMPTY_MAX_LUGGAGE = "Max luggage can't be null or empty.";

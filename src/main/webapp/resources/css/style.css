@@ -14,3 +14,34 @@
 .title {
     text-align: center;
 }
+
+nav.navbar {
+    background-color: #334431 !important;
+    color: #ffffff;
+}
+
+nav.navbar .navbar-brand {
+    color: #ffffff;
+}
+
+nav.navbar .navbar-brand:hover {
+    color: #e6af4b;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .show>.nav-link  {
+    color: #e6af4b;
+}
+
+.dropdown-menu {
+    background-color: #334431;
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item {
+    color: #ffffff;
+}

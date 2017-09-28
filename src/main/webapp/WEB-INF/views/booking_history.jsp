@@ -9,40 +9,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Booking success</title>
     <tags:basecss></tags:basecss>
-    <link href="<c:url value='/resources/css/bookingsuccess.css' />" rel="stylesheet"/>
+    <link href="<c:url value='/resources/css/history.css' />" rel="stylesheet"/>
 </head>
 <body>
 <tags:header></tags:header>
-<div id="ride-detail" class="container wrapper">
+<div id="history" class="container wrapper">
     <div class="row">
         <div class="col">
-            <h2>Your booking history</h2>
+            <h2 class="title">Your booking history</h2>
             <c:forEach items="${rideBookings}" var="rideBooking">
-                <div class="booking-item row">
-                    <div class="col-sm-3">
+                <div class="history-item row">
+                    <div class="col-sm-3 left-box">
                         <p class="date">
-                                ${rideBooking.booking.bookingDateTime}
+                            <i class="fa fa-calendar" aria-hidden="true"></i> Start date: ${rideBooking.booking.bookingDateTime}
                         </p>
                         <p class="num-of-seat">
-                                ${rideBooking.booking.numOfSeat}
+                            <i class="fa fa-users" aria-hidden="true"></i> Seats: ${rideBooking.booking.numOfSeat}
                         </p>
                         <p class="price">
-                                ${rideBooking.ride.price}
+                            <i class="fa fa-usd" aria-hidden="true"></i> Price: $${rideBooking.ride.price}
                         </p>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 right-box">
                         <div class="pickup-point">
-                            <span>Pick-up point: </span>${rideBooking.ride.pickupPoint}
+                            <span><i class="fa fa-play-circle" aria-hidden="true"></i> Pick-up point: </span>${rideBooking.ride.pickupPoint}
                         </div>
                         <div class="dropoff-point">
-                            <span>Drop-off point: </span>${rideBooking.ride.dropoffPoint}
+                            <span><i class="fa fa-stop-circle-o" aria-hidden="true"></i> Drop-off point: </span>${rideBooking.ride.dropoffPoint}
                         </div>
 
                         <div class="driver">
                             <h2>Driver information</h2>
-                            <h3 class="driver-name">
+                            <p class="driver-name">
                                     <span>Name: </span>${rideBooking.ride.user.firstName} ${rideBooking.ride.user.lastName}
-                            </h3>
+                            </p>
                             <p class="driver-email">
                                 <span>Email: </span>${rideBooking.ride.user.email}
                             </p>

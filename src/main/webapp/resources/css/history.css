@@ -1,0 +1,61 @@
+#history h2.title {
+    border-bottom: 1px double #cccccc;
+    padding-bottom: 10px;
+}
+
+#history .history-item {
+    border-bottom: 1px dashed #cccccc;
+    padding: 10px 0;
+}
+
+#history .history-item:hover {
+    background-color: rgba(159, 205, 255, 0.3);
+}
+
+#history .history-item .left-box {
+    border-right: 1px solid #cccccc;
+}
+
+#history .history-item .left-box p{
+    margin-bottom: 5px;
+}
+
+#history .history-item .right-box .driver {
+    border: 1px dashed #cccccc;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#history .history-item .right-box .driver h2{
+    font-size: 18px;
+}
+
+#history .history-item .right-box .driver p {
+    margin-bottom: 5px;
+}
+
+#history .history-item .right-box .start-ride-detail span {
+    text-decoration: underline;
+}
+
+#history .history-item .right-box .start-ride-detail p {
+    font-style: italic;
+}
+
+#history .history-item .right-box .option {
+    border: 1px dashed #cccccc;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#history .history-item .right-box .option h2{
+    font-size: 18px;
+}
+
+#history .history-item .right-box .option p {
+    margin-bottom: 5px;
+}

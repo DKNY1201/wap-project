@@ -1,0 +1,117 @@
+.ride-detail-left {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.ride-detail-left .content .row {
+    margin-bottom: 10px;
+}
+
+.ride-detail-left .content .row i{
+    margin-right: 10px;
+}
+
+.driver {
+    background-color: rgba(159, 205, 255, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.driver .driver-name {
+    font-size: 16px;
+}
+
+.driver .ride-description {
+    font-size: 12px;
+}
+
+.driver .driver-image{
+    width: 140px;
+}
+
+.ride-detail-right {
+    flex: 0 0 30%;
+    max-width: 30%;
+    padding: 0;
+}
+
+.box {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.ride-detail-right .first-right-box .price {
+    border-bottom: 1px solid #ccc;
+    padding: 0 10px 10px;
+    line-height: 50px;
+    height: 50px;
+}
+
+.ride-detail-right .first-right-box .price .left{
+    float: left;
+}
+
+.ride-detail-right .first-right-box .price .right{
+    float: right;
+    font-size: 35px;
+}
+
+.ride-detail-right .first-right-box .passengers {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.ride-detail-right .first-right-box .passengers .passenger-on {
+    font-size: 40px;
+}
+
+.ride-detail-right .first-right-box .passengers .available-seat strong{
+    font-size: 30px;
+}
+
+.ride-detail-right .first-right-box .booking {
+    background: #eeeeee;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.ride-detail-right .first-right-box .booking select{
+    width: 50%;
+}
+
+.ride-detail-right .first-right-box .booking button {
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+}
+
+.ride-detail-right .second-right-box {
+    margin-top: 20px;
+}
+
+.ride-detail-right .second-right-box h2{
+    background-color: #eeeeee;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.ride-detail-right .second-right-box .driver-detail {
+    padding: 10px;
+}
+
+.ride-detail-right .second-right-box .driver-detail img {
+    float: left;
+    width: 80px;
+    margin-right: 10px;
+}
+
+.ride-detail-right .second-right-box .driver-detail h3 {
+    font-size: 18px;
+}
+
+.ride-detail-right .second-right-box .driver-detail p.age {
+    font-size: 12px;
+}

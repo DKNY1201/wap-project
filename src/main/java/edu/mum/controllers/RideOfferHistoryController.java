@@ -1,4 +1,9 @@
-package edu.mum.servlets;
+package edu.mum.controllers;
+
+import edu.mum.models.*;
+import edu.mum.repositories.BookingRepository;
+import edu.mum.repositories.RideRepository;
+import edu.mum.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,30 +14,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import edu.mum.models.Booking;
-import edu.mum.models.Ride;
-import edu.mum.models.RideBookingSeat;
-import edu.mum.repositories.BookingRepository;
-import edu.mum.repositories.RideRepository;
-import edu.mum.utils.Constants;
-import org.apache.log4j.Logger;
-
 /**
- * Created by Bi on 9/26/17.
+ * Created by Bi on 9/27/17.
  */
-@WebServlet(name = "SearchRideServlet", urlPatterns = {"/search"})
-public class SearchRideServlet extends HttpServlet {
-
-    static Logger logger = Logger.getLogger(SearchRideServlet.class);
-
+@WebServlet(name = "RideOfferHistoryController", urlPatterns = {"/ride_offer_history"})
+public class RideOfferHistoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
-        String pickupPoint = request.getParameter("pickupPoint") != null ? request.getParameter("pickupPoint") : "";
-        String dropoffPoint = request.getParameter("dropoffPoint") != null ? request.getParameter("dropoffPoint") : "";
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RideRepository rideRepository = new RideRepository();
-        List<Ride> rides = rideRepository.getRides(pickupPoint, dropoffPoint);
+        User user = (User) request.getSession().getAttribute("sesUser");
+        List<Ride> rides = rideRepository.getRidesByUserEmail(user.getEmail());
+
         List<RideBookingSeat> rideBookingSeats = new ArrayList<>();
         for (Ride ride: rides) {
             String rideID = "" +ride.getId();
@@ -54,11 +49,7 @@ public class SearchRideServlet extends HttpServlet {
         }
 
         request.setAttribute("rideBookingSeats", rideBookingSeats);
-        request.setAttribute("currentPage", "search");
-        request.getRequestDispatcher(Constants.URL_JSP_SEARCH).forward(request, response);
-    }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       doPost(request, response);
+        request.getRequestDispatcher(Constants.URL_JSP_RIDE_OFFER_HISTORY).include(request, response);
     }
 }

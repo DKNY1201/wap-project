@@ -24,6 +24,8 @@ public class RideRepository extends BaseRepository<Ride> {
 			"SELECT * FROM Ride WHERE pickupPoint LIKE ? AND dropoffPoint LIKE ? ORDER BY price";
 	private static final String GET_RIDE_BY_ID =
 			"SELECT * FROM Ride WHERE id = ? LIMIT 1";
+	private static final String GET_RIDES_BY_USER_EMAIL =
+			"SELECT * FROM Ride WHERE emailUser = ?";
 
 	static Logger logger = Logger.getLogger(RideRepository.class);
 	
@@ -72,6 +74,10 @@ public class RideRepository extends BaseRepository<Ride> {
 		} else {
 			return super.getList(GET_RIDE_BY_PICKUP_DROP_POINTS, getRide, "%" + pickupPoint + "%", "%" + dropoffPoint + "%");
 		}
+	}
+
+	public List<Ride> getRidesByUserEmail(String email) {
+		return super.getList(GET_RIDES_BY_USER_EMAIL, getRide, email);
 	}
 
 	public Ride getRideById(String id) {

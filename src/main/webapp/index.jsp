@@ -8,7 +8,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
     <title>Home Page</title>
     <tags:basecss></tags:basecss>
-    
     <link href="<c:url value='/resources/css/homepage.css' />" rel="stylesheet" />
 </head>
 <body>
@@ -16,34 +15,32 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-            <img class="img-fluid" alt="blabla" src="<c:url value='/resources/images/homepage-banner.jpg'/>">
+        <div class="col">
+            <img class="img-fluid" alt="Chalo chalo incar" src="<c:url value='/resources/images/homepage-banner.jpg'/>">
         </div>
     </div>
 
-    <form id="homeForm" action="" method="">
-        <div class="form-group">
-            <h1>Love getting there</h1>
-            <p>Carpool in good company</p>
+    <div class="row">
+        <div class="col">
+            <form action="search" method="post" id="search-ride-homepage">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="input-group col-sm-4">
+                            <span class="input-group-addon" id="basic-addon-pp"><i class="fa fa-play-circle" aria-hidden="true"></i></span>
+                            <input type="text" name="pickupPoint" class="form-control" placeholder="Pick up point" aria-label="pickupPoint"
+                                   aria-describedby="basic-addon-pp" required value="${param.pickupPoint}">
+                        </div>
+                        <div class="input-group col-sm-5">
+                            <span class="input-group-addon" id="basic-addon-dp"><i class="fa fa-stop-circle-o" aria-hidden="true"></i></span>
+                            <input type="text" name="dropoffPoint" class="form-control" placeholder="Drop off point" aria-label="dropoffPoint"
+                                   aria-describedby="basic-addon-dp" required value="${param.dropoffPoint}">
+                        </div>
+                        <button type="submit" class="col-sm-2 btn btn-danger">Find a ride</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <input class="form-control" id="fromCityName" name = "fromCityName" type="text" placeholder="Leaving from...">
-            </div>
-            <div class="col-md-3">
-                <input class="form-control" id="toCityName" name = "toCityName" type="text" placeholder="Going to...">
-            </div>
-
-            <div class="col-md-3">
-                <input class="form-control" id="startDate" name = "startDate" type="text" placeholder="Date (MM/DD/YYYY)" pattern = "(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](201)[789]" title = "Please enter the date as specified">
-            </div>
-
-            <div class="col-md-3">
-                <input type="submit" class="btn btn-primary" value="Find a ride">
-            </div>
-        </div>
-    </form>
+    </div>
 
 </div>
 

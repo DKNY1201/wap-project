@@ -12,14 +12,17 @@ public class User implements Serializable {
     private int yearOfBirth;
     private int gender;
     private int id;
+    private String profilePicture;
 
-    public User(int id, String firstName, String lastName, String email, int yearOfBirth, int gender) {
+    public User(int id, String firstName, String lastName, String email, int yearOfBirth, int gender, String profilePicture) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.yearOfBirth = yearOfBirth;
         this.gender = gender;
         this.id = id;
+        this.profilePicture = profilePicture;
+
     }
 
     public String getFirstName() {
@@ -68,6 +71,10 @@ public class User implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
     }
 
     @Override

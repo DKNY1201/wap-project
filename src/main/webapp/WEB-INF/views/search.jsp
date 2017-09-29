@@ -39,7 +39,14 @@
         <div class="row ride-item">
             <div class="col-sm-3">
                 <div class="info-box">
-                    <img src="<c:url value='/resources/images/avatar.jpg' />">
+                    <c:choose>
+                        <c:when test="${not empty rideBookingSeat.ride.user.profilePicture}">
+                            <img src="${rideBookingSeat.ride.user.profilePicture}">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="<c:url value='/resources/images/avatar.jpg' />">
+                        </c:otherwise>
+                    </c:choose>
                     <p>Name: ${rideBookingSeat.ride.user.firstName} ${rideBookingSeat.ride.user.lastName}</p>
                     <p>
                         Age:

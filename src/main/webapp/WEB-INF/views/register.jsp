@@ -15,7 +15,7 @@
 <tags:header></tags:header>
 <div id="register" class="container wrapper">
 
-    <form id="register-form" action="register" method="POST">
+    <form id="register-form" action="register" method="POST" enctype="multipart/form-data">
         <h2 class="title">Sign up</h2>
 
         <div class="form-check">
@@ -75,12 +75,13 @@
                    class="form-text text-muted">${errConfirmPassword} ${errPasswordNotEqual}</small>
         </div>
 
-        <%--<label class="custom-file">--%>
-            <%--<input type="file" name="avatar" class="form-control custom-file-input" placeholder="Upload your avatar"--%>
-                   <%--aria-label="avatar" aria-describedby="basic-addon-img" required>--%>
-            <%--<span class="custom-file-control"></span>--%>
-        <%--</label>--%>
-        <%--<small name="errConfirmPassword" class="form-text text-muted">${errConfirmPassword}&nbsp;${errPasswordNotEqual}</small>--%>
+        <div class="form-group">
+            <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input" name="profile_picture">
+                <span class="custom-file-control"></span>
+            </label>
+            <small class="form-text text-muted">${errProfilePicture} ${errProfilePicture}</small>
+        </div>
 
         <div class="form-group">
             <select class="form-control" id="year-of-birth" name="yearOfBirth" required>

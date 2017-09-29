@@ -63,7 +63,7 @@
                 <div class="driver">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img class="driver-image" src="<c:url value='/resources/images/avatar.jpg' />">
+                            <img class="driver-image" src="<c:url value='${ride.user.profilePicture}' />">
                         </div>
                         <div class="col-sm-9">
                             <h3 class="driver-name">${ride.user.firstName} ${ride.user.lastName}</h3>

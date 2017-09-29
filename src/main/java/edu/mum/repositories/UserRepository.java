@@ -17,7 +17,7 @@ public class UserRepository extends BaseRepository<User> {
 	private static final String GET_USER_BY_ID =
 			"SELECT * FROM Users WHERE id=? LIMIT 1";
 	private static final String CREATE_USER = 
-			"insert into Users(firstName, lastName, email, password, yearOfBirth, gender) values (?,?,?,?,?,?)";
+			"insert into Users(firstName, lastName, email, password, yearOfBirth, gender, profilePicture) values (?,?,?,?,?,?,?)";
 	private static final String UPDATE_USER = 
 			"UPDATE User SET email = ?, firstName = ?, lastName = ?, gender = ?, birthday = ? WHERE id = ?";
 
@@ -31,7 +31,8 @@ public class UserRepository extends BaseRepository<User> {
 					rs.getString("lastName"),
 					rs.getString("email"),
 					rs.getInt("yearOfBirth"),
-					rs.getInt("gender"));
+					rs.getInt("gender"),
+					rs.getString("profilePicture"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			logger.error("Database connection problem");
@@ -39,8 +40,8 @@ public class UserRepository extends BaseRepository<User> {
 		return user;
 	};
 	
-	public boolean createUser(String firstName, String lastName, String email, String password, String yearOfBirth, String gender) {
-		return save(CREATE_USER, firstName, lastName, email, PasswordUtils.generateHash(password), yearOfBirth, gender);
+	public boolean createUser(String firstName, String lastName, String email, String password, String yearOfBirth, String gender, String profilePicture) {
+		return save(CREATE_USER, firstName, lastName, email, PasswordUtils.generateHash(password), yearOfBirth, gender, profilePicture);
 	}
 	
 	public User getUser(String email, String password) {

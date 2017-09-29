@@ -36,6 +36,7 @@ public class Constants {
     public static final String ERROR_PASSWORD_PATTERN = "Password doesn't meet the requirement.";
     public static final String EMPTY_PASSWORD_COMFIRM = "Password confirm can't be null or empty.";
     public static final String NOT_SAME_CONFIRM_PASSWORD = "Password and password confirm must be the same.";
+    public static final String ERROR_PROFILE_PICTURE = "Profile picture can't be null or empty";
     public static final String EMPTY_YEAR_OF_BIRTH = "Please select Year of birth";
     public static final String ERROR_EMAIL_EXISTS = "This is email already exists. Please enter another valid email.";
 

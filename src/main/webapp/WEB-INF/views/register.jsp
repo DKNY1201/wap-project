@@ -75,12 +75,17 @@
                    class="form-text text-muted">${errConfirmPassword} ${errPasswordNotEqual}</small>
         </div>
 
-        <div class="form-group">
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input" name="profile_picture">
-                <span class="custom-file-control"></span>
-            </label>
-            <small class="form-text text-muted">${errProfilePicture} ${errProfilePicture}</small>
+        <div class="form-group profile-picture">
+            <label for="profile_picture">Profile Picture</label>
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Browse&hellip; <input id="profile_picture" type="file" style="display: none;" name="profile_picture">
+                    </span>
+                </label>
+                <input type="text" class="form-control" readonly>
+                <small class="form-text text-muted">${errProfilePicture}</small>
+            </div>
         </div>
 
         <div class="form-group">
@@ -106,5 +111,6 @@
 </div>
 <tags:footer></tags:footer>
 <tags:basejs></tags:basejs>
+<script src="<c:url value='/resources/js/register.js' />"></script>
 </body>
 </html>
